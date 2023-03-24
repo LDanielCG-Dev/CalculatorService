@@ -1,0 +1,149 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\dev\\CalculatorServiceV2\\EvicertiaFCT_CalculatorService\\CalculatorService\\CalculatorService.Client\\CalculatorService.Client.csproj": {}
+  },
+  "projects": {
+    "C:\\dev\\CalculatorServiceV2\\EvicertiaFCT_CalculatorService\\CalculatorService\\CalculatorService.Client\\CalculatorService.Client.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\dev\\CalculatorServiceV2\\EvicertiaFCT_CalculatorService\\CalculatorService\\CalculatorService.Client\\CalculatorService.Client.csproj",
+        "projectName": "CalculatorService.Client",
+        "projectPath": "C:\\dev\\CalculatorServiceV2\\EvicertiaFCT_CalculatorService\\CalculatorService\\CalculatorService.Client\\CalculatorService.Client.csproj",
+        "packagesPath": "C:\\Users\\lcasado_evicertia\\.nuget\\packages\\",
+        "outputPath": "C:\\dev\\CalculatorServiceV2\\EvicertiaFCT_CalculatorService\\CalculatorService\\CalculatorService.Client\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\lcasado_evicertia\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\dev\\CalculatorServiceV2\\EvicertiaFCT_CalculatorService\\CalculatorService\\CalculatorService.ServerAPI\\CalculatorService.ServerAPI.csproj": {
+                "projectPath": "C:\\dev\\CalculatorServiceV2\\EvicertiaFCT_CalculatorService\\CalculatorService\\CalculatorService.ServerAPI\\CalculatorService.ServerAPI.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "RestSharp": {
+              "target": "Package",
+              "version": "[109.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\dev\\CalculatorServiceV2\\EvicertiaFCT_CalculatorService\\CalculatorService\\CalculatorService.ServerAPI\\CalculatorService.ServerAPI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\dev\\CalculatorServiceV2\\EvicertiaFCT_CalculatorService\\CalculatorService\\CalculatorService.ServerAPI\\CalculatorService.ServerAPI.csproj",
+        "projectName": "CalculatorService.ServerAPI",
+        "projectPath": "C:\\dev\\CalculatorServiceV2\\EvicertiaFCT_CalculatorService\\CalculatorService\\CalculatorService.ServerAPI\\CalculatorService.ServerAPI.csproj",
+        "packagesPath": "C:\\Users\\lcasado_evicertia\\.nuget\\packages\\",
+        "outputPath": "C:\\dev\\CalculatorServiceV2\\EvicertiaFCT_CalculatorService\\CalculatorService\\CalculatorService.ServerAPI\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\lcasado_evicertia\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "RestSharp": {
+              "target": "Package",
+              "version": "[109.0.1, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.2.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
