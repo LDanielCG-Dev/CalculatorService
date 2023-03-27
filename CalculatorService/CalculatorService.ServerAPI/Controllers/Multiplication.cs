@@ -1,8 +1,8 @@
 ﻿namespace CalculatorService.ServerAPI.Controllers
 {
-	public class Multiplication : OperationBase
+	public class Multiplication
 	{
-		public override double Calculate(double[] operands)
+		public double Calculate(double[] operands)
 		{
 			double result = operands[0];
 			for (int i = 1; i < operands.Length; i++)

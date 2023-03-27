@@ -1,8 +1,8 @@
 ﻿namespace CalculatorService.ServerAPI.Controllers
 {
-	public class Subtraction //: OperationBase
+	public class Subtraction
 	{
-		public /*override*/ double Calculate(double minuend, double subtrahend)
+		public double Calculate(double minuend, double subtrahend)
 		{
 			double result = minuend - subtrahend;
 			
