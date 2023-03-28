@@ -1,18 +1,31 @@
 ﻿using CalculatorService.ServerAPI.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace CalculatorService.ServerAPI.Controllers
 {
 	[Route("[controller]")]
 	[ApiController]
-	public class CalculatorServiceController : ControllerBase
+	public class CalculatorController : ControllerBase
 	{
 		[HttpPost("add")]
 		public ActionResult<AdditionResponse> Add(AdditionRequest request)
 		{
-			var addition = new Addition();
-			var result = addition.Calculate(request.Addends.ToArray());
-			return AdditionResponse.FromAddition(result);
+			if (request.IsValid())
+			{
+				var result = request.Calculate();
+				return AdditionResponse.FromAddition(result);
+			}
+			else
+			{
+				var modelState = new ModelStateDictionary();
+				var errorKey = "addends";
+				var errorMessage = "Invalid input parameters. Make sure you entered at least two numbers and they don't have more than nine digits.";
+				modelState.AddModelError(errorKey, errorMessage);
+			
+				var badRequest = new CalculatorBadRequest(modelState);
+				return BadRequest(badRequest);
+			}
 		}
 
 		[HttpPost("sub")]
@@ -36,7 +49,7 @@ namespace CalculatorService.ServerAPI.Controllers
 		{
 			var division = new Division();
 			var result = division.Calculate(request.Dividend, request.Divisor);
-			return DivisionResponse.FromDivision(result.ToArray()[0], result.ToArray()[1]);
+			return DivisionResponse.FromDivision(result.First(), result.Last());
 		}
 
 		[HttpPost("sqrt")]
