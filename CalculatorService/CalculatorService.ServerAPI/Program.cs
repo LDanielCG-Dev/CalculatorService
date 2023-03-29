@@ -19,7 +19,7 @@
 //			if (app.Environment.IsDevelopment())
 //			{
 //				app.UseSwagger();
-//				app.UseSwaggerUI(//options => 
+//				app.UseSwaggerUI(//options =>
 //				//{
 //				//	options.EnableValidator("http://localhost/");
 //				//	options.
@@ -37,11 +37,9 @@
 //	}
 //}
 
-using CalculatorService.ServerAPI.Controllers;
-using CalculatorService.ServerAPI.Models;
+using CalculatorService.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace CalculatorService.ServerAPI
 {
@@ -58,7 +56,7 @@ namespace CalculatorService.ServerAPI
 					options.InvalidModelStateResponseFactory = context =>
 					{
 						var badRequest = new CalculatorBadRequest(context.ModelState);
-						
+
 						return new BadRequestObjectResult(badRequest);
 					};
 				});

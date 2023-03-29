@@ -4,10 +4,10 @@
 	{
 		public List<int> Calculate(int dividend, int divisor)
 		{
-			int quotient = dividend / divisor;
-			int remainder = dividend % divisor;
+			var quotient = dividend / divisor;
+			var remainder = dividend % divisor;
 
-			List<int> result = new List<int>
+			List<int> result = new()
 			{
 				quotient,
 				remainder

@@ -1,4 +1,4 @@
-﻿namespace CalculatorService.ServerAPI.Models
+﻿namespace CalculatorService.Models
 {
 	public class SquareRootRequest
 	{

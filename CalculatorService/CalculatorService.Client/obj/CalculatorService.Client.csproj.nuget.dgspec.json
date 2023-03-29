@@ -73,6 +73,71 @@
         }
       }
     },
+    "C:\\dev\\CalculatorServiceV2\\EvicertiaFCT_CalculatorService\\CalculatorService\\CalculatorService.Models\\CalculatorService.Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\dev\\CalculatorServiceV2\\EvicertiaFCT_CalculatorService\\CalculatorService\\CalculatorService.Models\\CalculatorService.Models.csproj",
+        "projectName": "CalculatorService.Models",
+        "projectPath": "C:\\dev\\CalculatorServiceV2\\EvicertiaFCT_CalculatorService\\CalculatorService\\CalculatorService.Models\\CalculatorService.Models.csproj",
+        "packagesPath": "C:\\Users\\lcasado_evicertia\\.nuget\\packages\\",
+        "outputPath": "C:\\dev\\CalculatorServiceV2\\EvicertiaFCT_CalculatorService\\CalculatorService\\CalculatorService.Models\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\lcasado_evicertia\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNet.Mvc": {
+              "target": "Package",
+              "version": "[5.2.9, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\dev\\CalculatorServiceV2\\EvicertiaFCT_CalculatorService\\CalculatorService\\CalculatorService.ServerAPI\\CalculatorService.ServerAPI.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -96,7 +161,11 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\dev\\CalculatorServiceV2\\EvicertiaFCT_CalculatorService\\CalculatorService\\CalculatorService.Models\\CalculatorService.Models.csproj": {
+                "projectPath": "C:\\dev\\CalculatorServiceV2\\EvicertiaFCT_CalculatorService\\CalculatorService\\CalculatorService.Models\\CalculatorService.Models.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

@@ -4,9 +4,9 @@
 	{
 		public double Calculate(double number)
 		{
-			double result = Math.Sqrt(number);
-			
-			return result;
+			var result = Math.Sqrt(number);
+
+			return Math.Round(result, 3);
 		}
 	}
 }

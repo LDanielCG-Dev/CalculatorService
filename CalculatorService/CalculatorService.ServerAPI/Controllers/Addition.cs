@@ -1,7 +1,4 @@
-﻿using CalculatorService.ServerAPI.Models;
-using RestSharp;
-using System.Net;
-using System.Runtime.CompilerServices;
+﻿using CalculatorService.Models;
 
 namespace CalculatorService.ServerAPI.Controllers
 {
@@ -9,12 +6,12 @@ namespace CalculatorService.ServerAPI.Controllers
 	{
 		public static double Calculate(this AdditionRequest @this)
 		{
-			double result = 0;
-			foreach (double operand in @this.Addends.ToArray())
+			var result = 0.0;
+			foreach (var operand in @this.Addends.ToArray())
 			{
 				result += operand;
 			}
-			return result;
+			return Math.Round(result, 3);
 		}
 
 		public static bool IsValid(this AdditionRequest @this)
@@ -24,10 +21,10 @@ namespace CalculatorService.ServerAPI.Controllers
 			var allValid = true;
 
 			if (operands.Length >= 2)
-			{ 
-				foreach (double num in operands)
+			{
+				foreach (var num in operands)
 				{
-					if(num.ToString().Length > MAX_DIGITS)
+					if(num.ToString().Length > MAX_DIGITS || !double.TryParse(num.ToString(), out var addParsed))
 					{
 						allValid = false;
 					}

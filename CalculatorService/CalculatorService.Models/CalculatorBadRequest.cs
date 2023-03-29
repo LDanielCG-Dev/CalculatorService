@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace CalculatorService.ServerAPI.Models
+namespace CalculatorService.Models
 {
 	public class CalculatorBadRequest
 	{
-		public string? ErrorCode { get; set; }
-		public int? ErrorStatus { get; set; }
-		public string? ErrorMessage { get; set; }
+		public string ErrorCode { get; set; }
+		public int ErrorStatus { get; set; }
+		public string ErrorMessage { get; set; }
 
 		public CalculatorBadRequest(ModelStateDictionary modelState)
 		{
@@ -15,9 +15,9 @@ namespace CalculatorService.ServerAPI.Models
 
 			var modelStateValues = modelState.Values;
 			var message = "";
-			foreach (ModelStateEntry values in modelStateValues)
+			foreach (var values in modelStateValues)
 			{
-				foreach (ModelError error in values.Errors)
+				foreach (var error in values.Errors)
 				{
 					if (!string.IsNullOrEmpty(error.ErrorMessage))
 					{

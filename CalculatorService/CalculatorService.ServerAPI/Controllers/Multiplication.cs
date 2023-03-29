@@ -4,12 +4,12 @@
 	{
 		public double Calculate(double[] operands)
 		{
-			double result = operands[0];
-			for (int i = 1; i < operands.Length; i++)
+			var result = operands[0];
+			for (var i = 1; i < operands.Length; i++)
 			{
 				result *= operands[i];
 			}
-			return result;
+			return Math.Round(result, 3);
 		}
 	}
 }

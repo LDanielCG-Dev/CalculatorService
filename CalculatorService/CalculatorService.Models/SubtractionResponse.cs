@@ -1,8 +1,8 @@
-﻿namespace CalculatorService.ServerAPI.Models
+﻿namespace CalculatorService.Models
 {
 	public class SubtractionResponse
 	{
-		public double? Difference { get; set; }
+		public double Difference { get; set; }
 
 		public static SubtractionResponse FromSubtraction(double difference)
 		{

@@ -1,8 +1,8 @@
-﻿namespace CalculatorService.ServerAPI.Models
+﻿namespace CalculatorService.Models
 {
 	public class MultiplicationResponse
 	{
-		public double? Product { get; set; }
+		public double Product { get; set; }
 
 		public static MultiplicationResponse FromMultiplication(double product)
 		{

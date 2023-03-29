@@ -1,8 +1,8 @@
-﻿namespace CalculatorService.ServerAPI.Models
+﻿namespace CalculatorService.Models
 {
 	public class AdditionResponse
 	{
-		public double? Sum { get; set; }
+		public double Sum { get; set; }
 
 		public static AdditionResponse FromAddition(double sum)
 		{

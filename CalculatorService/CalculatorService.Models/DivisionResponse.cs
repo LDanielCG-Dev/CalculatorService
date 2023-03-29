@@ -1,9 +1,9 @@
-﻿namespace CalculatorService.ServerAPI.Models
+﻿namespace CalculatorService.Models
 {
 	public class DivisionResponse
 	{
-		public int? Quotient { get; set; }
-		public int? Remainder { get; set; }
+		public int Quotient { get; set; }
+		public int Remainder { get; set; }
 
 		public static DivisionResponse FromDivision(int quotient, int remainder)
 		{

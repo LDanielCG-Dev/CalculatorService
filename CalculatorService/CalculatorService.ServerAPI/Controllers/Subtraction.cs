@@ -4,9 +4,9 @@
 	{
 		public double Calculate(double minuend, double subtrahend)
 		{
-			double result = minuend - subtrahend;
-			
-			return result;
+			var result = minuend - subtrahend;
+
+			return Math.Round(result,3);
 		}
 	}
 }
