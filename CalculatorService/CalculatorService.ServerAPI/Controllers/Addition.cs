@@ -16,26 +16,21 @@ namespace CalculatorService.ServerAPI.Controllers
 
 		public static bool IsValid(this AdditionRequest @this)
 		{
-			const int MAX_DIGITS = 9;
-			var operands = @this.Addends.ToArray();
-			var allValid = true;
-
-			if (operands.Length >= 2)
+			if (@this == null || @this.Addends.Count() < 2)
 			{
-				foreach (var num in operands)
+				return false;
+			}
+
+			const int MAX_DIGITS = 9;
+			foreach (var num in @this.Addends)
+			{
+				if (num.ToString().Length > MAX_DIGITS || !double.TryParse(num.ToString(), out var addParsed))
 				{
-					if(num.ToString().Length > MAX_DIGITS || !double.TryParse(num.ToString(), out var addParsed))
-					{
-						allValid = false;
-					}
+					return false;
 				}
 			}
-			else
-			{
-				allValid = false;
-			}
 
-			return allValid;
+			return true;
 		}
 	}
 }

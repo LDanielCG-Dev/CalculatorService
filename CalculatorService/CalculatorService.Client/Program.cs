@@ -6,10 +6,11 @@ namespace CalculatorService.Client
 {
 	class Program
 	{
-		private static TResponse SendRequestGetResponse<TRequest, TResponse>(RestClient client, string endPoint, Method method, (string propertyName, object propertyValue)[] propertyValues) where TRequest : new() where TResponse : class, new()
+		private static RestResponse<TResponse> SendRequestGetResponse<TRequest, TResponse>(RestClient client, string endPoint, Method method, params (string propertyName, object propertyValue)[] propertyValues) where TRequest : new() where TResponse : class, new()
 		{
 			var requestBody = BuildRequest<TRequest>(propertyValues);
 			var response = SendData<TResponse>(client, endPoint, method, requestBody);
+
 			return response;
 		}
 		private static T BuildRequest<T>(params (string propertyName, object propertyValue)[] propertyValues) where T : new()
@@ -25,20 +26,23 @@ namespace CalculatorService.Client
 			}
 			return instance;
 		}
-		private static T SendData<T>(RestClient client, string endpoint, Method method, object requestBody) where T : class, new()
+		private static RestResponse<T> SendData<T>(RestClient client, string endpoint, Method method, object requestBody) where T : class, new()
 		{
 			var request = new RestRequest(endpoint, method);
+			request.AddHeader("Accept", "application/json");
+			request.AddHeader("Content-Type", "application/json");
+			request.AddHeader("X-Evi-Tracking-Id", trackingId); // Need to implement
 			request.AddJsonBody(requestBody);
 
 			var response = client.Execute<T>(request);
 			if (response.StatusCode == System.Net.HttpStatusCode.OK)
 			{
-				return response.Data;
+				return response;
 			}
 			else
 			{
 				Console.WriteLine($"Error: {response.ErrorMessage}");
-				return default(T);
+				return null;
 			}
 		}
 		private static int GetUserInputInt(bool divisor = false)
@@ -49,11 +53,12 @@ namespace CalculatorService.Client
 				Console.Write("> ");
 				var input = Console.ReadLine();
 
-				if (NumberIsValid(input))
+				if (IntIsValid(input))
 				{
-					if(divisor && input.Equals("0"))
+					if (divisor && input.Equals("0"))
 					{
 						Console.WriteLine("You can't divide by zero!");
+						Console.WriteLine("Please enter a valid number:");
 					}
 					else
 					{
@@ -88,7 +93,7 @@ namespace CalculatorService.Client
 				Console.Write("> ");
 				var input = Console.ReadLine();
 
-				if (NumberIsValid(input))
+				if (DoubleIsValid(input))
 				{
 					if (input.Contains(','))
 					{
@@ -104,7 +109,6 @@ namespace CalculatorService.Client
 		{
 			const int MAX_DIGITS = 9;
 			var operands = input.ToArray();
-			var allValid = true;
 
 			if (operands.Length >= 2)
 			{
@@ -113,74 +117,128 @@ namespace CalculatorService.Client
 					if (num.ToString().Length > MAX_DIGITS || !double.TryParse(num, out var addParsed))
 					{
 						Console.WriteLine($"Invalid number: {num}");
-						allValid = false;
+						return false;
 					}
 				}
 			}
 			else
 			{
 				Console.WriteLine("Please enter at least 2 valid numbers separated by commas:");
-				allValid = false;
+				return false;
 			}
 
-			return allValid;
+			return true;
 		}
-		private static bool NumberIsValid(string number)
+		private static bool DoubleIsValid(string number)
 		{
-			var allValid = true;
-
-			if(!string.IsNullOrEmpty(number))
+			if (!string.IsNullOrEmpty(number))
 			{
 				if (!double.TryParse(number, out var parsed))
 				{
 					Console.WriteLine($"Invalid number: {number}");
 					Console.WriteLine("Please enter a valid number:");
-					allValid = false;
+					return false;
 				}
 			}
 			else
 			{
 				Console.WriteLine("Please enter a number:");
-				allValid = false;
+				return false;
 			}
 
-			return allValid;
-
+			return true;
 		}
-		private static void PrintResult(object obj)
+		private static bool IntIsValid(string number)
 		{
-			if(obj != null){
-				var type = obj.GetType();
+			if (!string.IsNullOrEmpty(number))
+			{
+				if (!int.TryParse(number, out var parsed))
+				{
+					Console.WriteLine($"Invalid number: {number}");
+					Console.WriteLine("Please enter a valid number:");
+					return false;
+				}
+			}
+			else
+			{
+				Console.WriteLine("Please enter a number:");
+				return false;
+			}
+
+			return true;
+		}
+		private static void PrintResult<T>(RestResponse<T> response) where T : class, new()
+		{
+			if (response != null)
+			{
+				// Print headers
+				Console.WriteLine($"HTTP/1.1 200 {response.StatusCode}");
+				foreach (var header in response.ContentHeaders)
+				{
+					Console.WriteLine($"{header.Name}: {header.Value}");
+				}
+
+				// Print data
+				var data = response.Data;
+				var type = data.GetType();
 				var properties = type.GetProperties();
 
 				Console.WriteLine("{");
 				foreach (var property in properties)
 				{
-					var value = property.GetValue(obj);
+					var value = property.GetValue(data);
 					Console.WriteLine($"  {property.Name}: {value}");
 				}
 				Console.WriteLine("}");
 			}
 			else
 			{
-				// Catch errors if the response is null
+				Console.WriteLine("ERROR: the response returned null!");
 			}
 		}
+		public static void PrintJournalResponse(RestResponse<JournalResponse> response)
+		{
+			var journalResponse = response.Data;
+			Console.WriteLine("{");
+			Console.WriteLine("  Operations: [");
 
+			for (int i = 0; i < journalResponse.Operations.Count; i++)
+			{
+				var record = journalResponse.Operations[i];
+				Console.WriteLine("    {");
+				Console.WriteLine($"      Operation: {record.Operation},");
+				Console.WriteLine($"      Calculation: {record.Calculation},");
+				Console.WriteLine($"      Date: {record.Date}");
+				Console.Write("    }");
+				if (i != journalResponse.Operations.Count - 1)
+				{
+					Console.WriteLine(",");
+				}
+				else
+				{
+					Console.WriteLine();
+				}
+			}
+
+			Console.WriteLine("  ]");
+			Console.WriteLine("}");
+		}
+
+		public static string trackingId = new Random().Next(1000, 10000).ToString();
 		public static void Main(string[] args)
 		{
 			var client = new RestClient("http://localhost:5199");
 			var endPoint = "";
-			Method method;
+			var method = Method.Post;
 
 			while (true)
 			{
 				// Read user input
-				Console.WriteLine("------------------------------------------------------------------------------------------------");
-				Console.WriteLine("Select the operation you want to do: (Write 'add', 'subtract', 'multiply', 'divide' or 'sqroot')");
+				Console.WriteLine("-----------------------------------------------------------------------------------------------------------");
+				Console.WriteLine("Select the operation you want to do: (Write 'add', 'subtract', 'multiply', 'divide', 'sqroot' or 'journal')");
 				Console.Write("> ");
 				var operation = Console.ReadLine();
-				Console.WriteLine("------------------------------------------------------------------------------------------------");
+				Console.WriteLine("-----------------------------------------------------------------------------------------------------------");
 
 				switch (operation.ToLower())
 				{
@@ -191,10 +249,7 @@ namespace CalculatorService.Client
 
 						// Data is sent and recieved
 						endPoint = "Calculator/add";
-						method = Method.Post;
-						var additionResponse = SendRequestGetResponse<AdditionRequest, AdditionResponse>(client,endPoint,method,("Addends", addends)); //Need to fix
-						//var additionRequestBody = BuildRequest<AdditionRequest>(("Addends", addends));
-						//var additionResponse = SendData<AdditionResponse>(client,endPoint,method,additionRequestBody);
+						var additionResponse = SendRequestGetResponse<AdditionRequest, AdditionResponse>(client, endPoint, method, ("Addends", addends));
 
 						// Print result
 						PrintResult(additionResponse);
@@ -211,9 +266,7 @@ namespace CalculatorService.Client
 
 						// Data is sent and recieved
 						endPoint = "Calculator/sub";
-						method = Method.Post;
-						var subtractionRequestBody = BuildRequest<SubtractionRequest>(("Minuend", minuend),("Subtrahend", subtrahend));
-						var subtractionResponse = SendData<SubtractionResponse>(client, endPoint, method, subtractionRequestBody);
+						var subtractionResponse = SendRequestGetResponse<SubtractionRequest, SubtractionResponse>(client, endPoint, method, ("Minuend", minuend), ("Subtrahend", subtrahend));
 
 						// Print result
 						PrintResult(subtractionResponse);
@@ -226,9 +279,7 @@ namespace CalculatorService.Client
 
 						// Data is sent and recieved
 						endPoint = "Calculator/mult";
-						method = Method.Post;
-						var multiplicationRequestBody = BuildRequest<MultiplicationRequest>(("Factors", factors));
-						var multiplicationResponse = SendData<MultiplicationResponse>(client,endPoint,method,multiplicationRequestBody);
+						var multiplicationResponse = SendRequestGetResponse<MultiplicationRequest, MultiplicationResponse>(client, endPoint, method, ("Factors", factors));
 
 						// Print result
 						PrintResult(multiplicationResponse);
@@ -237,7 +288,7 @@ namespace CalculatorService.Client
 					case "divide":
 						// Input dividend
 						Console.WriteLine("Enter dividend:");
-						int dividend =	GetUserInputInt();
+						int dividend = GetUserInputInt();
 
 						// Input divisor
 						Console.WriteLine("Entero divisor:");
@@ -245,9 +296,7 @@ namespace CalculatorService.Client
 
 						// Data is sent and recieved
 						endPoint = "Calculator/div";
-						method = Method.Post;
-						var divisionRequestBody = BuildRequest<DivisionRequest>(("Dividend", dividend), ("Divisor", divisor));
-						var divisionResponse = SendData<DivisionResponse>(client,endPoint,method,divisionRequestBody);
+						var divisionResponse = SendRequestGetResponse<DivisionRequest, DivisionResponse>(client, endPoint, method, ("Dividend", dividend), ("Divisor", divisor));
 
 						// Print result
 						PrintResult(divisionResponse);
@@ -260,13 +309,22 @@ namespace CalculatorService.Client
 
 						// Data is sent and recieved
 						endPoint = "Calculator/sqrt";
-						method = Method.Post;
-						var squareRootRequestBody = BuildRequest<SquareRootRequest>(("Number", numberSqrt));
-						var squareRootResponse = SendData<SquareRootResponse>(client,endPoint,method,squareRootRequestBody);
+						var squareRootResponse = SendRequestGetResponse<SquareRootRequest, SquareRootResponse>(client, endPoint, method, ("Number", numberSqrt));
 
 						// Print result
 						PrintResult(squareRootResponse);
 						break;
+
+					case "journal":
+
+						// Data is sent and recieved
+						endPoint = "Calculator/journal/query";
+						var journalResponse = SendRequestGetResponse<JournalRequest, JournalResponse>(client, endPoint, method, ("Id", trackingId));
+
+						// Print result
+						PrintJournalResponse(journalResponse);
+						break;
+
 					default:
 						Console.WriteLine("Please select one of the operations!");
 						break;
