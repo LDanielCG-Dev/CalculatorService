@@ -1,11 +1,13 @@
-﻿namespace CalculatorService.ServerAPI.Controllers
+﻿using CalculatorService.Models;
+
+namespace CalculatorService.ServerAPI.Controllers
 {
-	public class Division
+	public static class Division
 	{
-		public List<int> Calculate(int dividend, int divisor)
+		public static List<int> Calculate(this DivisionRequest @this)
 		{
-			var quotient = dividend / divisor;
-			var remainder = dividend % divisor;
+			var quotient = @this.Dividend / @this.Divisor;
+			var remainder = @this.Dividend % @this.Divisor;
 
 			List<int> result = new()
 			{
@@ -14,6 +16,22 @@
 			};
 
 			return result;
+		}
+
+		public static bool IsValid(this DivisionRequest @this)
+		{
+			if (@this == null || @this.Divisor.Equals("0"))
+			{
+				return false;
+			}
+
+			const int MAX_DIGITS = 9;
+			if (@this.Dividend.ToString().Length > MAX_DIGITS || @this.Divisor.ToString().Length > MAX_DIGITS)
+			{
+				return false;
+			}
+
+			return int.TryParse(@this.Dividend.ToString(), out var dividendParsed) && int.TryParse(@this.Divisor.ToString(), out var divisorParsed);
 		}
 	}
 }

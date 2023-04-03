@@ -1,6 +1,6 @@
 ﻿using RestSharp;
 using CalculatorService.Models;
-using CalculatorService.ServerAPI.Controllers;
+using System.Globalization;
 
 namespace CalculatorService.Client
 {
@@ -79,7 +79,7 @@ namespace CalculatorService.Client
 
 				if (AddMultIsValid(input))
 				{
-					inputNum = Array.ConvertAll(input, Double.Parse).ToList();
+					inputNum = Array.ConvertAll(input, s => Double.Parse(s, CultureInfo.GetCultureInfo("en-US"))).ToList();
 					break;
 				}
 			}
@@ -87,22 +87,24 @@ namespace CalculatorService.Client
 		}
 		private static double GetUserInputDouble()
 		{
-			double inputNum;
+			double inputNum = 0.0;
+			string input = "";
 			while (true)
 			{
 				Console.Write("> ");
-				var input = Console.ReadLine();
+				input = Console.ReadLine();
 
 				if (DoubleIsValid(input))
 				{
 					if (input.Contains(','))
 					{
-						input = input.Replace(',', '.');
+						inputNum = double.Parse(input.Replace(',', '.'), CultureInfo.GetCultureInfo("en-US"));
 					}
 					inputNum = double.Parse(input);
 					break;
 				}
 			}
+			
 			return inputNum;
 		}
 		private static bool AddMultIsValid(string[] input)
@@ -114,7 +116,7 @@ namespace CalculatorService.Client
 			{
 				foreach (var num in operands)
 				{
-					if (num.ToString().Length > MAX_DIGITS || !double.TryParse(num, out var addParsed))
+					if (!double.TryParse(num, out var addParsed) || num.ToString().Length > MAX_DIGITS)
 					{
 						Console.WriteLine($"Invalid number: {num}");
 						return false;
@@ -133,7 +135,8 @@ namespace CalculatorService.Client
 		{
 			if (!string.IsNullOrEmpty(number))
 			{
-				if (!double.TryParse(number, out var parsed))
+				const int MAX_DIGITS = 9;
+				if (!double.TryParse(number, out var parsed) || number.Length > MAX_DIGITS)
 				{
 					Console.WriteLine($"Invalid number: {number}");
 					Console.WriteLine("Please enter a valid number:");
@@ -152,7 +155,8 @@ namespace CalculatorService.Client
 		{
 			if (!string.IsNullOrEmpty(number))
 			{
-				if (!int.TryParse(number, out var parsed))
+				const int MAX_DIGITS = 9;
+				if (!int.TryParse(number, out var parsed) || number.Length > MAX_DIGITS)
 				{
 					Console.WriteLine($"Invalid number: {number}");
 					Console.WriteLine("Please enter a valid number:");
@@ -196,7 +200,7 @@ namespace CalculatorService.Client
 				Console.WriteLine("ERROR: the response returned null!");
 			}
 		}
-		public static void PrintJournalResponse(RestResponse<JournalResponse> response)
+		private static void PrintJournalResponse(RestResponse<JournalResponse> response)
 		{
 			var journalResponse = response.Data;
 			Console.WriteLine("{");

@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\dev\\CalculatorServiceV2\\EvicertiaFCT_CalculatorService\\CalculatorService\\CalculatorService.Client\\CalculatorService.Client.csproj": {}
+    "C:\\Users\\TheBlastSFX\\source\\repos\\CalculatorService\\CalculatorService.Client\\CalculatorService.Client.csproj": {}
   },
   "projects": {
-    "C:\\dev\\CalculatorServiceV2\\EvicertiaFCT_CalculatorService\\CalculatorService\\CalculatorService.Client\\CalculatorService.Client.csproj": {
+    "C:\\Users\\TheBlastSFX\\source\\repos\\CalculatorService\\CalculatorService.Client\\CalculatorService.Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\dev\\CalculatorServiceV2\\EvicertiaFCT_CalculatorService\\CalculatorService\\CalculatorService.Client\\CalculatorService.Client.csproj",
+        "projectUniqueName": "C:\\Users\\TheBlastSFX\\source\\repos\\CalculatorService\\CalculatorService.Client\\CalculatorService.Client.csproj",
         "projectName": "CalculatorService.Client",
-        "projectPath": "C:\\dev\\CalculatorServiceV2\\EvicertiaFCT_CalculatorService\\CalculatorService\\CalculatorService.Client\\CalculatorService.Client.csproj",
-        "packagesPath": "C:\\Users\\lcasado_evicertia\\.nuget\\packages\\",
-        "outputPath": "C:\\dev\\CalculatorServiceV2\\EvicertiaFCT_CalculatorService\\CalculatorService\\CalculatorService.Client\\obj\\",
+        "projectPath": "C:\\Users\\TheBlastSFX\\source\\repos\\CalculatorService\\CalculatorService.Client\\CalculatorService.Client.csproj",
+        "packagesPath": "C:\\Users\\TheBlastSFX\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\TheBlastSFX\\source\\repos\\CalculatorService\\CalculatorService.Client\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "E:\\PROGRAMAS\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\lcasado_evicertia\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\TheBlastSFX\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +32,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\dev\\CalculatorServiceV2\\EvicertiaFCT_CalculatorService\\CalculatorService\\CalculatorService.ServerAPI\\CalculatorService.ServerAPI.csproj": {
-                "projectPath": "C:\\dev\\CalculatorServiceV2\\EvicertiaFCT_CalculatorService\\CalculatorService\\CalculatorService.ServerAPI\\CalculatorService.ServerAPI.csproj"
+              "C:\\Users\\TheBlastSFX\\source\\repos\\CalculatorService\\CalculatorService.ServerAPI\\CalculatorService.ServerAPI.csproj": {
+                "projectPath": "C:\\Users\\TheBlastSFX\\source\\repos\\CalculatorService\\CalculatorService.ServerAPI\\CalculatorService.ServerAPI.csproj"
               }
             }
           }
@@ -73,17 +77,21 @@
         }
       }
     },
-    "C:\\dev\\CalculatorServiceV2\\EvicertiaFCT_CalculatorService\\CalculatorService\\CalculatorService.Models\\CalculatorService.Models.csproj": {
+    "C:\\Users\\TheBlastSFX\\source\\repos\\CalculatorService\\CalculatorService.Models\\CalculatorService.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\dev\\CalculatorServiceV2\\EvicertiaFCT_CalculatorService\\CalculatorService\\CalculatorService.Models\\CalculatorService.Models.csproj",
+        "projectUniqueName": "C:\\Users\\TheBlastSFX\\source\\repos\\CalculatorService\\CalculatorService.Models\\CalculatorService.Models.csproj",
         "projectName": "CalculatorService.Models",
-        "projectPath": "C:\\dev\\CalculatorServiceV2\\EvicertiaFCT_CalculatorService\\CalculatorService\\CalculatorService.Models\\CalculatorService.Models.csproj",
-        "packagesPath": "C:\\Users\\lcasado_evicertia\\.nuget\\packages\\",
-        "outputPath": "C:\\dev\\CalculatorServiceV2\\EvicertiaFCT_CalculatorService\\CalculatorService\\CalculatorService.Models\\obj\\",
+        "projectPath": "C:\\Users\\TheBlastSFX\\source\\repos\\CalculatorService\\CalculatorService.Models\\CalculatorService.Models.csproj",
+        "packagesPath": "C:\\Users\\TheBlastSFX\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\TheBlastSFX\\source\\repos\\CalculatorService\\CalculatorService.Models\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "E:\\PROGRAMAS\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\lcasado_evicertia\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\TheBlastSFX\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -138,17 +146,21 @@
         }
       }
     },
-    "C:\\dev\\CalculatorServiceV2\\EvicertiaFCT_CalculatorService\\CalculatorService\\CalculatorService.ServerAPI\\CalculatorService.ServerAPI.csproj": {
+    "C:\\Users\\TheBlastSFX\\source\\repos\\CalculatorService\\CalculatorService.ServerAPI\\CalculatorService.ServerAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\dev\\CalculatorServiceV2\\EvicertiaFCT_CalculatorService\\CalculatorService\\CalculatorService.ServerAPI\\CalculatorService.ServerAPI.csproj",
+        "projectUniqueName": "C:\\Users\\TheBlastSFX\\source\\repos\\CalculatorService\\CalculatorService.ServerAPI\\CalculatorService.ServerAPI.csproj",
         "projectName": "CalculatorService.ServerAPI",
-        "projectPath": "C:\\dev\\CalculatorServiceV2\\EvicertiaFCT_CalculatorService\\CalculatorService\\CalculatorService.ServerAPI\\CalculatorService.ServerAPI.csproj",
-        "packagesPath": "C:\\Users\\lcasado_evicertia\\.nuget\\packages\\",
-        "outputPath": "C:\\dev\\CalculatorServiceV2\\EvicertiaFCT_CalculatorService\\CalculatorService\\CalculatorService.ServerAPI\\obj\\",
+        "projectPath": "C:\\Users\\TheBlastSFX\\source\\repos\\CalculatorService\\CalculatorService.ServerAPI\\CalculatorService.ServerAPI.csproj",
+        "packagesPath": "C:\\Users\\TheBlastSFX\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\TheBlastSFX\\source\\repos\\CalculatorService\\CalculatorService.ServerAPI\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "E:\\PROGRAMAS\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\lcasado_evicertia\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\TheBlastSFX\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -162,8 +174,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\dev\\CalculatorServiceV2\\EvicertiaFCT_CalculatorService\\CalculatorService\\CalculatorService.Models\\CalculatorService.Models.csproj": {
-                "projectPath": "C:\\dev\\CalculatorServiceV2\\EvicertiaFCT_CalculatorService\\CalculatorService\\CalculatorService.Models\\CalculatorService.Models.csproj"
+              "C:\\Users\\TheBlastSFX\\source\\repos\\CalculatorService\\CalculatorService.Models\\CalculatorService.Models.csproj": {
+                "projectPath": "C:\\Users\\TheBlastSFX\\source\\repos\\CalculatorService\\CalculatorService.Models\\CalculatorService.Models.csproj"
               }
             }
           }

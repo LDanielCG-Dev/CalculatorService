@@ -13,6 +13,7 @@ namespace CalculatorService.ServerAPI.Controllers
 		string trackingId = "";
 		string operation = "";
 		string calculation = "";
+		const string trackingIdName = "X-Evi-Tracking-Id";
 
 		// ipaddress/Calculator/add
 		[HttpPost("add")]
@@ -21,11 +22,11 @@ namespace CalculatorService.ServerAPI.Controllers
 			if (request.IsValid())
 			{
 				var result = request.Calculate();
-				trackingId = HttpContext.Request.Headers["X-Evi-Tracking-Id"];
+				trackingId = HttpContext.Request.Headers[trackingIdName];
 				operation = "add";
-				calculation = String.Join('+',request.Addends.ToArray())+"="+result;
+				calculation = String.Join('+', request.Addends.ToArray()) + "=" + result;
 				// save to journal
-				Journal.AddRecord(trackingId,operation,calculation);
+				Journal.AddRecord(trackingId, operation, calculation);
 				// Return result to client
 				return AdditionResponse.FromAddition(result);
 			}
@@ -38,7 +39,7 @@ namespace CalculatorService.ServerAPI.Controllers
 
 			// Change to something like this whenever is ready:
 			/*
-			 * if (request.notNull()
+			 * if (request.notNull())
 			 * {
 			 *		if(request.IsValid())
 			 *		{
@@ -71,7 +72,7 @@ namespace CalculatorService.ServerAPI.Controllers
 			if (request.IsValid())
 			{
 				var result = request.Calculate();
-				trackingId = HttpContext.Request.Headers["X-Evi-Tracking-Id"];
+				trackingId = HttpContext.Request.Headers[trackingIdName];
 				operation = "sub";
 				calculation = request.Minuend + "-" + request.Subtrahend + "=" + result;
 				// save to journal
@@ -90,25 +91,67 @@ namespace CalculatorService.ServerAPI.Controllers
 		[HttpPost("mult")]
 		public ActionResult<MultiplicationResponse> Multiply(MultiplicationRequest request)
 		{
-			var multiplication = new Multiplication();
-			var result = multiplication.Calculate(request.Factors.ToArray());
-			return MultiplicationResponse.FromMultiplication(result);
+			if (request.IsValid())
+			{
+				var result = request.Calculate();
+				trackingId = HttpContext.Request.Headers[trackingIdName];
+				operation = "mult";
+				calculation = String.Join('*', request.Factors.ToArray()) + "=" + result;
+				// Save to journal
+				Journal.AddRecord(trackingId, operation, calculation);
+				// Return result to client
+				return MultiplicationResponse.FromMultiplication(result);
+			}
+			else
+			{
+				var errorKey = "multiplication";
+				var errorMessage = "Invalid input parameters. Make sure you entered at least two numbers and they don't have more than nine digits.";
+				return BadRequest(ThrowBadRequest400(errorKey, errorMessage));
+			}
 		}
 		// ipaddress/Calculator/div
 		[HttpPost("div")]
 		public ActionResult<DivisionResponse> Division(DivisionRequest request)
 		{
-			var division = new Division();
-			var result = division.Calculate(request.Dividend, request.Divisor);
-			return DivisionResponse.FromDivision(result.First(), result.Last());
+			if(request.IsValid())
+			{
+				var result = request.Calculate();
+				trackingId = HttpContext.Request.Headers[trackingIdName];
+				operation = "div";
+				calculation = request.Dividend + "/" + request.Divisor + "=" + " { Quotient:" + result.ToArray()[0] + ", Remainder: " + result.ToArray()[1] + " }";
+				// Save to journal
+				Journal.AddRecord(trackingId, operation, calculation);
+				// Return result to client
+				return DivisionResponse.FromDivision(result.First(), result.Last());
+			}
+			else
+			{
+				var errorKey = "division";
+				var errorMessage = "Invalid input parameters. Make sure you didn't enter a zero as the divisor!.";
+				return BadRequest(ThrowBadRequest400(errorKey, errorMessage));
+			}
 		}
 		// ipaddress/Calculator/sqrt
 		[HttpPost("sqrt")]
 		public ActionResult<SquareRootResponse> SquareRoot(SquareRootRequest request)
 		{
-			var squareRoot = new SquareRoot();
-			var result = squareRoot.Calculate(request.Number);
-			return SquareRootResponse.FromSquareRoot(result);
+			if(request.IsValid()) 
+			{
+				var result = request.Calculate();
+				trackingId = HttpContext.Request.Headers[trackingIdName];
+				operation = "sqrt";
+				calculation = "√" + request.Number + "=" + result;
+				// Save to journal
+				Journal.AddRecord(trackingId, operation, calculation);
+				// Return result to client
+				return SquareRootResponse.FromSquareRoot(result);
+			}
+			else
+			{
+				var errorKey = "squareRoot";
+				var errorMessage = "Invalid input parameters. Make sure you entered only numbers and not other characters.";
+				return BadRequest(ThrowBadRequest400(errorKey, errorMessage));
+			}
 		}
 		// ipaddress/Calculator/journal/query
 		[HttpPost("journal/query")]
@@ -122,7 +165,6 @@ namespace CalculatorService.ServerAPI.Controllers
 
 			return null;
 		}
-
 		public static CalculatorBadRequest ThrowBadRequest400(string errorKey, string errorMessage)
 		{
 			var modelState = new ModelStateDictionary();
