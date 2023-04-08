@@ -1,42 +1,3 @@
-//namespace CalculatorService.ServerAPI
-//{
-//	public class Program
-//	{
-//		public static void Main(string[] args)
-//		{
-//			var builder = WebApplication.CreateBuilder(args);
-
-//			// Add services to the container.
-
-//			builder.Services.AddControllers();
-//			// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-//			builder.Services.AddEndpointsApiExplorer();
-//			builder.Services.AddSwaggerGen();
-
-//			var app = builder.Build();
-
-//			// Configure the HTTP request pipeline.
-//			if (app.Environment.IsDevelopment())
-//			{
-//				app.UseSwagger();
-//				app.UseSwaggerUI(//options =>
-//				//{
-//				//	options.EnableValidator("http://localhost/");
-//				//	options.
-//				//}
-//				);
-//			}
-
-//			app.UseAuthorization();
-
-
-//			app.MapControllers();
-
-//			app.Run();
-//		}
-//	}
-//}
-
 using CalculatorService.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
@@ -59,6 +20,11 @@ namespace CalculatorService.ServerAPI
 
 						return new BadRequestObjectResult(badRequest);
 					};
+
+					// Handle InternalServerError (500) error
+					options.SuppressMapClientErrors = true;
+					options.SuppressModelStateInvalidFilter = true;
+					options.ClientErrorMapping[StatusCodes.Status500InternalServerError].Link = "https://localhost:5199/swagger/v1/swagger.json#/CalculatorInternalServerError";
 				});
 
 
@@ -66,7 +32,12 @@ namespace CalculatorService.ServerAPI
 			builder.Services.AddSwaggerGen(c =>
 			{
 				c.SwaggerDoc("v1", new OpenApiInfo { Title = "Calculator API", Version = "v1" });
+
+				// Add a response model for InternalServerError (500)
+				c.MapType<CalculatorInternalServerError>(() => new OpenApiSchema { Type = "object" });
+				c.OperationFilter<AddInternalServerErrorResponse>();
 			});
+
 
 			var app = builder.Build();
 

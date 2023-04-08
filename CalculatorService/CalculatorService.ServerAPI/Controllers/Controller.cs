@@ -19,6 +19,12 @@ namespace CalculatorService.ServerAPI.Controllers
 		[HttpPost("add")]
 		public ActionResult<AdditionResponse> Add(AdditionRequest request)
 		{
+			// Check if the request is null or empty and returns an InternalServerError 500 response
+			if (request == null || request.IsEmpty())
+			{
+				return new ObjectResult(new CalculatorInternalServerError());
+			}
+
 			if (request.IsValid())
 			{
 				var result = request.Calculate();
@@ -37,38 +43,17 @@ namespace CalculatorService.ServerAPI.Controllers
 				return BadRequest(ThrowBadRequest400(errorKey, errorMessage));
 			}
 
-			// Change to something like this whenever is ready:
-			/*
-			 * if (request.notNull())
-			 * {
-			 *		if(request.IsValid())
-			 *		{
-			 *			var result = request.Calculate();
-			 *			return AdditionResponse.FromAddition(result);
-			 *		}
-			 *		else
-			 *		{
-			 *			var modelState = new ModelStateDictionary();
-			 *			var errorKey = "addends";
-			 *			var errorMessage = "Invalid input parameters. Make sure you entered at least two numbers and they don't have more than nine digits.";
-			 *			modelState.AddModelError(errorKey, errorMessage);
-			 *
-			 *			var badRequest = new CalculatorBadRequest(modelState);
-			 *			return BadRequest(badRequest);
-			 *		}
-			 * }
-			 * else
-			 * {
-			 *		// Error 500
-			 * }
-			 */
-
-
 		}
 		// ipaddress/Calculator/sub
 		[HttpPost("sub")]
 		public ActionResult<SubtractionResponse> Subtract(SubtractionRequest request)
 		{
+			// Check if the request is null or empty and returns an InternalServerError 500 response
+			if (request == null || request.IsEmpty())
+			{
+				return new ObjectResult(new CalculatorInternalServerError());
+			}
+
 			if (request.IsValid())
 			{
 				var result = request.Calculate();
@@ -91,6 +76,12 @@ namespace CalculatorService.ServerAPI.Controllers
 		[HttpPost("mult")]
 		public ActionResult<MultiplicationResponse> Multiply(MultiplicationRequest request)
 		{
+			// Check if the request is null or empty and returns an InternalServerError 500 response
+			if (request == null || request.IsEmpty())
+			{
+				return new ObjectResult(new CalculatorInternalServerError());
+			}
+
 			if (request.IsValid())
 			{
 				var result = request.Calculate();
@@ -113,7 +104,13 @@ namespace CalculatorService.ServerAPI.Controllers
 		[HttpPost("div")]
 		public ActionResult<DivisionResponse> Division(DivisionRequest request)
 		{
-			if(request.IsValid())
+			// Check if the request is null or empty and returns an InternalServerError 500 response
+			if (request == null || request.IsEmpty())
+			{
+				return new ObjectResult(new CalculatorInternalServerError());
+			}
+
+			if (request.IsValid())
 			{
 				var result = request.Calculate();
 				trackingId = HttpContext.Request.Headers[trackingIdName];
@@ -135,7 +132,13 @@ namespace CalculatorService.ServerAPI.Controllers
 		[HttpPost("sqrt")]
 		public ActionResult<SquareRootResponse> SquareRoot(SquareRootRequest request)
 		{
-			if(request.IsValid()) 
+			// Check if the request is null or empty and returns an InternalServerError 500 response
+			if (request == null || request.IsEmpty())
+			{
+				return new ObjectResult(new CalculatorInternalServerError());
+			}
+
+			if (request.IsValid()) 
 			{
 				var result = request.Calculate();
 				trackingId = HttpContext.Request.Headers[trackingIdName];
@@ -152,11 +155,17 @@ namespace CalculatorService.ServerAPI.Controllers
 				var errorMessage = "Invalid input parameters. Make sure you entered only numbers and not other characters.";
 				return BadRequest(ThrowBadRequest400(errorKey, errorMessage));
 			}
-		}
+		} // For some reason if I send an empty body request, the sqrt returns the result as 0 instead of the error 500.
 		// ipaddress/Calculator/journal/query
 		[HttpPost("journal/query")]
 		public ActionResult<JournalResponse> JournalQuery(JournalRequest request)
 		{
+			// Check if the request is null or empty and returns an InternalServerError 500 response
+			if (request == null || request.IsEmpty())
+			{
+				return new ObjectResult(new CalculatorInternalServerError());
+			}
+
 			if (request.HasTrackingId())
 			{
 				var records = Journal.GetRecordsForTrackingId(request.Id);
@@ -172,5 +181,6 @@ namespace CalculatorService.ServerAPI.Controllers
 
 			return new CalculatorBadRequest(modelState);
 		}
+		
 	}
 }

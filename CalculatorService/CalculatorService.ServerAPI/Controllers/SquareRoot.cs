@@ -1,5 +1,4 @@
 ﻿using CalculatorService.Models;
-using System.Runtime.CompilerServices;
 
 namespace CalculatorService.ServerAPI.Controllers
 {
@@ -27,5 +26,8 @@ namespace CalculatorService.ServerAPI.Controllers
 
 			return true;
 		}
+
+		public static bool IsEmpty(this SquareRootRequest @this)
+			=> @this == null || @this.Number == null;
 	}
 }

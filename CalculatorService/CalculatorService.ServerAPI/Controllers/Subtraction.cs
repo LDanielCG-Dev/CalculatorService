@@ -10,6 +10,7 @@ namespace CalculatorService.ServerAPI.Controllers
 
 			return Math.Round(result,3);
 		}
+		
 		public static bool IsValid(this SubtractionRequest @this)
 		{
 			if (@this != null)
@@ -25,5 +26,8 @@ namespace CalculatorService.ServerAPI.Controllers
 			}
 			return false;
 		}
+
+		public static bool IsEmpty(this SubtractionRequest @this)
+			=> @this.GetType().GetProperties().All(prop => prop.GetValue(@this) == null || (prop.PropertyType == typeof(int?) && (int?)prop.GetValue(@this) == 0));
 	}
 }

@@ -31,7 +31,7 @@ namespace CalculatorService.Client
 			var request = new RestRequest(endpoint, method);
 			request.AddHeader("Accept", "application/json");
 			request.AddHeader("Content-Type", "application/json");
-			request.AddHeader("X-Evi-Tracking-Id", trackingId); // Need to implement
+			request.AddHeader("X-Evi-Tracking-Id", trackingId);
 			request.AddJsonBody(requestBody);
 
 			var response = client.Execute<T>(request);

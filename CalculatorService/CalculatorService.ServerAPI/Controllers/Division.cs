@@ -20,7 +20,7 @@ namespace CalculatorService.ServerAPI.Controllers
 
 		public static bool IsValid(this DivisionRequest @this)
 		{
-			if (@this == null || @this.Divisor.Equals("0"))
+			if (@this == null || @this.Divisor == 0)
 			{
 				return false;
 			}
@@ -33,5 +33,8 @@ namespace CalculatorService.ServerAPI.Controllers
 
 			return int.TryParse(@this.Dividend.ToString(), out var dividendParsed) && int.TryParse(@this.Divisor.ToString(), out var divisorParsed);
 		}
+
+		public static bool IsEmpty(this DivisionRequest @this)
+			=> @this.Dividend == null || @this.Divisor == null || @this.Dividend == 0;
 	}
 }

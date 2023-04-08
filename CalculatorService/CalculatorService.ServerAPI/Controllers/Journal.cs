@@ -33,5 +33,8 @@ namespace CalculatorService.ServerAPI.Controllers
 
 		public static bool HasTrackingId(this JournalRequest @this)
 			=> !string.IsNullOrEmpty(@this.Id?.Trim());
+
+		public static bool IsEmpty(this JournalRequest @this)
+			=> @this.GetType().GetProperties().All(prop => prop.GetValue(@this) == null || (prop.PropertyType == typeof(int?) && (int?)prop.GetValue(@this) == 0));
 	}
 }
