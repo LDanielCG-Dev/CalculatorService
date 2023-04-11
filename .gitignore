@@ -10,3 +10,5 @@
 /CalculatorService/CalculatorService.Models/bin
 /CalculatorService/CalculatorService.Models/obj
 /.vs
+/CalculatorService/LoggerService/bin/Debug/net6.0
+/CalculatorService/LoggerService/obj

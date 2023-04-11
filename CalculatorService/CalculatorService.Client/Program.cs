@@ -104,7 +104,7 @@ namespace CalculatorService.Client
 					break;
 				}
 			}
-			
+
 			return inputNum;
 		}
 		private static bool AddMultIsValid(string[] input)
@@ -204,27 +204,34 @@ namespace CalculatorService.Client
 		{
 			var journalResponse = response.Data;
 			Console.WriteLine("{");
-			Console.WriteLine("  Operations: [");
 
-			for (int i = 0; i < journalResponse.Operations.Count; i++)
+			if (journalResponse.Operations.Count > 0)
 			{
-				var record = journalResponse.Operations[i];
-				Console.WriteLine("    {");
-				Console.WriteLine($"      Operation: {record.Operation},");
-				Console.WriteLine($"      Calculation: {record.Calculation},");
-				Console.WriteLine($"      Date: {record.Date}");
-				Console.Write("    }");
-				if (i != journalResponse.Operations.Count - 1)
+				Console.WriteLine("  Operations: [");
+				for (int i = 0; i < journalResponse.Operations.Count; i++)
 				{
-					Console.WriteLine(",");
+					var record = journalResponse.Operations[i];
+					Console.WriteLine("    {");
+					Console.WriteLine($"      Operation: {record.Operation},");
+					Console.WriteLine($"      Calculation: {record.Calculation},");
+					Console.WriteLine($"      Date: {record.Date}");
+					Console.Write("    }");
+					if (i != journalResponse.Operations.Count - 1)
+					{
+						Console.WriteLine(",");
+					}
+					else
+					{
+						Console.WriteLine();
+					}
 				}
-				else
-				{
-					Console.WriteLine();
-				}
+				Console.WriteLine("  ]");
+			}
+			else if(journalResponse.Message != null)
+			{
+				Console.WriteLine($"  Message: {journalResponse.Message}");
 			}
 
-			Console.WriteLine("  ]");
 			Console.WriteLine("}");
 		}
 

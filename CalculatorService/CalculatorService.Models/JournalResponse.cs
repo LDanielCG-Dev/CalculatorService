@@ -5,6 +5,7 @@ namespace CalculatorService.Models
 	public class JournalResponse
 	{
 		public List<JournalOperation> Operations { get; set; } = new List<JournalOperation>();
+		public string Message { get; set; }
 
 		public static JournalResponse FromJournal(ConcurrentBag<string[]> records)
 		{

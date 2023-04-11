@@ -1,6 +1,8 @@
 ﻿using CalculatorService.Models;
+using LoggerService;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using NLog;
 
 
 namespace CalculatorService.ServerAPI.Controllers
@@ -14,25 +16,49 @@ namespace CalculatorService.ServerAPI.Controllers
 		string operation = "";
 		string calculation = "";
 		const string trackingIdName = "X-Evi-Tracking-Id";
+		//private static readonly Serilog.ILogger Logger = LoggerConfig.Configure();
+		private readonly ILoggerManager _logger;
+
+		public CalculatorController(ILoggerManager logger)
+		{
+			_logger = logger;
+		}
 
 		// ipaddress/Calculator/add
 		[HttpPost("add")]
 		public ActionResult<AdditionResponse> Add(AdditionRequest request)
 		{
+			_logger.LogInfo("Operation selected: Add.");
+
 			// Check if the request is null or empty and returns an InternalServerError 500 response
 			if (request == null || request.IsEmpty())
 			{
+				_logger.LogError("ERROR 500: InternalServerError. Request is null or empty.");
 				return new ObjectResult(new CalculatorInternalServerError());
 			}
 
 			if (request.IsValid())
 			{
-				var result = request.Calculate();
 				trackingId = HttpContext.Request.Headers[trackingIdName];
+
+				// Tracking ID log
+				_logger.LogInfo($"TrackingID: {trackingId}.");
+
 				operation = "add";
-				calculation = String.Join('+', request.Addends.ToArray()) + "=" + result;
+				calculation = String.Join('+', request.Addends.ToArray());
+
+				// Calculation log
+				_logger.LogDebug($"Adding {calculation}...");
+
+				var result = request.Calculate();
+
+				// Result log
+				_logger.LogDebug($"The result of {calculation} is {result}.");
+
 				// save to journal
-				Journal.AddRecord(trackingId, operation, calculation);
+				_logger.LogInfo("Adding operation to journal...");
+				Journal.AddRecord(trackingId, operation, calculation+"="+result);
+				_logger.LogInfo("Operation added to journal successfully.");
 				// Return result to client
 				return AdditionResponse.FromAddition(result);
 			}
@@ -48,20 +74,37 @@ namespace CalculatorService.ServerAPI.Controllers
 		[HttpPost("sub")]
 		public ActionResult<SubtractionResponse> Subtract(SubtractionRequest request)
 		{
+			//Logger.Information("Operation selected: Sub.");
+
 			// Check if the request is null or empty and returns an InternalServerError 500 response
 			if (request == null || request.IsEmpty())
 			{
+				//Logger.Information("ERROR 500: InternalServerError. Request is null or empty.");
 				return new ObjectResult(new CalculatorInternalServerError());
 			}
 
 			if (request.IsValid())
 			{
-				var result = request.Calculate();
 				trackingId = HttpContext.Request.Headers[trackingIdName];
+
+				// Tracking ID log
+				//Logger.Information($"TrackingID: {trackingId}.");
+
 				operation = "sub";
-				calculation = request.Minuend + "-" + request.Subtrahend + "=" + result;
+				calculation = request.Minuend + "-" + request.Subtrahend;
+
+				// Calculation log
+				//Logger.Information($"Subtracting {calculation}...");
+
+				var result = request.Calculate();
+
+				// Result log
+				//Logger.Information($"The result of {calculation} is {result}.");
+
 				// save to journal
-				Journal.AddRecord(trackingId, operation, calculation);
+				//Logger.Information("Adding operation to journal...");
+				Journal.AddRecord(trackingId, operation, calculation+"="+result);
+				//Logger.Information("Operation added to journal successfully.");
 				// Return result to client
 				return SubtractionResponse.FromSubtraction(result);
 			}
@@ -76,20 +119,37 @@ namespace CalculatorService.ServerAPI.Controllers
 		[HttpPost("mult")]
 		public ActionResult<MultiplicationResponse> Multiply(MultiplicationRequest request)
 		{
+			//Logger.Information("Operation selected: Mult.");
+
 			// Check if the request is null or empty and returns an InternalServerError 500 response
 			if (request == null || request.IsEmpty())
 			{
+				//Logger.Information("ERROR 500: InternalServerError. Request is null or empty.");
 				return new ObjectResult(new CalculatorInternalServerError());
 			}
 
 			if (request.IsValid())
 			{
-				var result = request.Calculate();
 				trackingId = HttpContext.Request.Headers[trackingIdName];
+
+				// Tracking ID log
+				//Logger.Information($"TrackingID: {trackingId}.");
+
 				operation = "mult";
-				calculation = String.Join('*', request.Factors.ToArray()) + "=" + result;
+				calculation = String.Join('*', request.Factors.ToArray());
+
+				// Calculation log
+				//Logger.Information($"Multiplicating {calculation}...");
+
+				var result = request.Calculate();
+
+				// Result log
+				//Logger.Information($"The result of {calculation} is {result}.");
+
 				// Save to journal
-				Journal.AddRecord(trackingId, operation, calculation);
+				//Logger.Information("Adding operation to journal...");
+				Journal.AddRecord(trackingId, operation, calculation+"="+result);
+				//Logger.Information("Operation added to journal successfully.");
 				// Return result to client
 				return MultiplicationResponse.FromMultiplication(result);
 			}
@@ -104,20 +164,37 @@ namespace CalculatorService.ServerAPI.Controllers
 		[HttpPost("div")]
 		public ActionResult<DivisionResponse> Division(DivisionRequest request)
 		{
+			//Logger.Information("Operation selected: Div.");
+
 			// Check if the request is null or empty and returns an InternalServerError 500 response
 			if (request == null || request.IsEmpty())
 			{
+				//Logger.Information("ERROR 500: InternalServerError. Request is null or empty.");
 				return new ObjectResult(new CalculatorInternalServerError());
 			}
 
 			if (request.IsValid())
 			{
-				var result = request.Calculate();
 				trackingId = HttpContext.Request.Headers[trackingIdName];
+
+				// Tracking ID log
+				//Logger.Information($"TrackingID: {trackingId}.");
+
 				operation = "div";
-				calculation = request.Dividend + "/" + request.Divisor + "=" + " { Quotient:" + result.ToArray()[0] + ", Remainder: " + result.ToArray()[1] + " }";
+				calculation = request.Dividend + "/" + request.Divisor;
+
+				// Calculation log
+				//Logger.Information($"Dividing {calculation}...");
+
+				var result = request.Calculate();
+
+				// Result log
+				//Logger.Information($"The result of {calculation} is {result}.");
+
 				// Save to journal
-				Journal.AddRecord(trackingId, operation, calculation);
+				//Logger.Information("Adding operation to journal...");
+				Journal.AddRecord(trackingId, operation, calculation+"=" + " { Quotient:" + result.ToArray()[0] + ", Remainder: " + result.ToArray()[1] + " }");
+				//Logger.Information("Operation added to journal successfully.");
 				// Return result to client
 				return DivisionResponse.FromDivision(result.First(), result.Last());
 			}
@@ -132,20 +209,37 @@ namespace CalculatorService.ServerAPI.Controllers
 		[HttpPost("sqrt")]
 		public ActionResult<SquareRootResponse> SquareRoot(SquareRootRequest request)
 		{
+			//Logger.Information("Operation selected: Div.");
+
 			// Check if the request is null or empty and returns an InternalServerError 500 response
 			if (request == null || request.IsEmpty())
 			{
+				//Logger.Information("ERROR 500: InternalServerError. Request is null or empty.");
 				return new ObjectResult(new CalculatorInternalServerError());
 			}
 
-			if (request.IsValid()) 
+			if (request.IsValid())
 			{
-				var result = request.Calculate();
 				trackingId = HttpContext.Request.Headers[trackingIdName];
+
+				// Tracking ID log
+				//Logger.Information($"TrackingID: {trackingId}.");
+
 				operation = "sqrt";
-				calculation = "√" + request.Number + "=" + result;
+				calculation = "√" + request.Number;
+
+				// Calculation log
+				//Logger.Information($"Square rooting {calculation}...");
+
+				var result = request.Calculate();
+
+				// Result log
+				//Logger.Information($"The result of {calculation} is {result}.");
+
 				// Save to journal
-				Journal.AddRecord(trackingId, operation, calculation);
+				//Logger.Information("Adding operation to journal...");
+				Journal.AddRecord(trackingId, operation, calculation+"="+result);
+				//Logger.Information("Operation added to journal successfully.");
 				// Return result to client
 				return SquareRootResponse.FromSquareRoot(result);
 			}
@@ -169,18 +263,21 @@ namespace CalculatorService.ServerAPI.Controllers
 			if (request.HasTrackingId())
 			{
 				var records = Journal.GetRecordsForTrackingId(request.Id);
-				return JournalResponse.FromJournal(records);
+				if(records.Count > 1)
+				{
+					return JournalResponse.FromJournal(records);
+				}
 			}
 
-			return null;
+			return new ObjectResult(new JournalResponse { Operations = new List<JournalOperation>(), Message = "The journal is currently empty." });
 		}
 		public static CalculatorBadRequest ThrowBadRequest400(string errorKey, string errorMessage)
 		{
 			var modelState = new ModelStateDictionary();
 			modelState.AddModelError(errorKey, errorMessage);
-
+			//Logger.Information("ERROR 400: BadRequest. Invalid input parameters were provided.");
 			return new CalculatorBadRequest(modelState);
 		}
-		
+
 	}
 }

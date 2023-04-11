@@ -1,5 +1,4 @@
 ﻿using CalculatorService.Models;
-using System;
 using System.Collections.Concurrent;
 
 namespace CalculatorService.ServerAPI.Controllers
@@ -28,7 +27,9 @@ namespace CalculatorService.ServerAPI.Controllers
 				return recordsForTrackingId;
 			}
 
-			return null;
+			var emptyBag = new ConcurrentBag<string[]>();
+			emptyBag.Add(new string[] { "The journal is empty." });
+			return emptyBag;
 		}
 
 		public static bool HasTrackingId(this JournalRequest @this)

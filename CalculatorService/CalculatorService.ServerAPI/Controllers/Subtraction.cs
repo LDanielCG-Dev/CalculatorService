@@ -10,7 +10,7 @@ namespace CalculatorService.ServerAPI.Controllers
 
 			return Math.Round(result,3);
 		}
-		
+
 		public static bool IsValid(this SubtractionRequest @this)
 		{
 			if (@this != null)
