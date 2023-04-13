@@ -1,13 +1,16 @@
 ﻿using CalculatorService.Models;
+using LoggerService;
 
 namespace CalculatorService.ServerAPI.Controllers
 {
 	public static class Division
 	{
+		private static readonly ILoggerManager _logger = new LoggerManager();
 		public static List<int> Calculate(this DivisionRequest @this)
 		{
-			var quotient = @this.Dividend / @this.Divisor;
-			var remainder = @this.Dividend % @this.Divisor;
+			_logger.LogDebug("Calculating...");
+			var quotient = int.Parse(@this.Dividend.ToString()) / int.Parse(@this.Divisor.ToString());
+			var remainder = int.Parse(@this.Dividend.ToString()) % int.Parse(@this.Divisor.ToString());
 
 			List<int> result = new()
 			{
@@ -20,7 +23,7 @@ namespace CalculatorService.ServerAPI.Controllers
 
 		public static bool IsValid(this DivisionRequest @this)
 		{
-			if (@this == null || @this.Divisor == 0)
+			if (@this == null || @this.Divisor.ToString() == "0")
 			{
 				return false;
 			}
@@ -31,10 +34,10 @@ namespace CalculatorService.ServerAPI.Controllers
 				return false;
 			}
 
-			return int.TryParse(@this.Dividend.ToString(), out var dividendParsed) && int.TryParse(@this.Divisor.ToString(), out var divisorParsed);
+			return int.TryParse(@this.Dividend.ToString(), out int dividendParsed) && int.TryParse(@this.Divisor.ToString(), out int divisorParsed);
 		}
 
 		public static bool IsEmpty(this DivisionRequest @this)
-			=> @this.Dividend == null || @this.Divisor == null || @this.Dividend == 0;
+			=> @this.Dividend.ToString() == null || @this.Divisor.ToString() == null || @this.Dividend.ToString() == "0";
 	}
 }

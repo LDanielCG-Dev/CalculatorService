@@ -2,7 +2,7 @@
 {
 	public class SubtractionRequest
 	{
-		public double Minuend { get; set; }
-		public double Subtrahend { get; set; }
+		public double? Minuend { get; set; }
+		public double? Subtrahend { get; set; }
 	}
 }

@@ -2,7 +2,7 @@
 {
 	public class DivisionRequest
 	{
-		public int Dividend { get; set; }
-		public int Divisor { get; set; }
+		public int? Dividend { get; set; }
+		public int? Divisor { get; set; }
 	}
 }
