@@ -1,3 +1,9 @@
+using CalculatorService.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.OpenApi.Models;
+using LoggerService;
+using NLog;
+
 namespace CalculatorService.ServerAPI
 {
 	public class Program
@@ -6,12 +12,38 @@ namespace CalculatorService.ServerAPI
 		{
 			var builder = WebApplication.CreateBuilder(args);
 
-			// Add services to the container.
+			LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
 
-			builder.Services.AddControllers();
-			// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-			builder.Services.AddEndpointsApiExplorer();
-			builder.Services.AddSwaggerGen();
+			builder.Services.AddScoped<ILoggerManager, LoggerManager>();
+
+			// Add services to the container.
+			builder.Services.AddControllers()
+				.ConfigureApiBehaviorOptions(options =>
+				{
+					options.InvalidModelStateResponseFactory = context =>
+					{
+						var badRequest = new CalculatorBadRequest(context.ModelState);
+
+						return new BadRequestObjectResult(badRequest);
+					};
+
+					// Handle InternalServerError (500) error
+					options.SuppressMapClientErrors = true;
+					options.SuppressModelStateInvalidFilter = true;
+					options.ClientErrorMapping[StatusCodes.Status500InternalServerError].Link = "https://localhost:5199/swagger/v1/swagger.json#/CalculatorInternalServerError";
+				});
+
+
+			// Configure Swagger
+			builder.Services.AddSwaggerGen(c =>
+			{
+				c.SwaggerDoc("v1", new OpenApiInfo { Title = "Calculator API", Version = "v1" });
+
+				// Add a response model for InternalServerError (500)
+				c.MapType<CalculatorInternalServerError>(() => new OpenApiSchema { Type = "object" });
+				c.OperationFilter<AddInternalServerErrorResponse>();
+			});
+
 
 			var app = builder.Build();
 
@@ -19,13 +51,18 @@ namespace CalculatorService.ServerAPI
 			if (app.Environment.IsDevelopment())
 			{
 				app.UseSwagger();
-				app.UseSwaggerUI();
+				app.UseSwaggerUI(c =>
+				{
+					c.SwaggerEndpoint("/swagger/v1/swagger.json", "Calculator API V1");
+				});
 			}
 
+			app.UseRouting();
 			app.UseAuthorization();
-
-
-			app.MapControllers();
+			app.UseEndpoints(endpoints =>
+			{
+				endpoints.MapControllers();
+			});
 
 			app.Run();
 		}

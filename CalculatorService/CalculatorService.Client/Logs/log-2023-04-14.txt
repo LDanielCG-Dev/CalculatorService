@@ -1,0 +1,1248 @@
+#################################################################
+# Log entry:      0001
+#
+# Timestamp:      2023-04-14T10:34:14.8728003+02:00
+# Level:          info
+# Message:        Client started.   
+#################################################################
+# Log entry:      0001
+#
+# Timestamp:      2023-04-14T11:11:51.4440264+02:00
+# Level:          info
+# Message:        Client started.   
+#################################################################
+# Log entry:      0002
+#
+# Timestamp:      2023-04-14T11:11:51.4738403+02:00
+# Level:          info
+# Message:        Connecting to server with IP: http://localhost:5199   
+#################################################################
+# Log entry:      0003
+#
+# Timestamp:      2023-04-14T11:11:51.5050553+02:00
+# Level:          info
+# Message:        Selected method: Post.   
+#################################################################
+# Log entry:      0004
+#
+# Timestamp:      2023-04-14T11:12:04.7159475+02:00
+# Level:          info
+# Message:        Calculator menu displayed.   
+#################################################################
+# Log entry:      0005
+#
+# Timestamp:      2023-04-14T11:12:04.7159475+02:00
+# Level:          info
+# Message:        Operation selected: add   
+#################################################################
+# Log entry:      0006
+#
+# Timestamp:      2023-04-14T11:12:04.7159475+02:00
+# Level:          info
+# Message:        User inputting data...   
+#################################################################
+# Log entry:      0007
+#
+# Timestamp:      2023-04-14T11:12:12.5320035+02:00
+# Level:          info
+# Message:        Validating input...   
+#################################################################
+# Log entry:      0008
+#
+# Timestamp:      2023-04-14T11:12:12.5320035+02:00
+# Level:          info
+# Message:        Validation successful. The input is valid.   
+#################################################################
+# Log entry:      0009
+#
+# Timestamp:      2023-04-14T11:12:12.5320035+02:00
+# Level:          info
+# Message:        Returning validated data...   
+#################################################################
+# Log entry:      0010
+#
+# Timestamp:      2023-04-14T11:12:12.5320035+02:00
+# Level:          info
+# Message:        Building request...   
+#################################################################
+# Log entry:      0011
+#
+# Timestamp:      2023-04-14T11:12:12.5320035+02:00
+# Level:          info
+# Message:        Request built.   
+#################################################################
+# Log entry:      0012
+#
+# Timestamp:      2023-04-14T11:12:12.5320035+02:00
+# Level:          info
+# Message:        Setting request headers...   
+#################################################################
+# Log entry:      0013
+#
+# Timestamp:      2023-04-14T11:12:12.5320035+02:00
+# Level:          info
+# Message:        Setting request body...   
+#################################################################
+# Log entry:      0014
+#
+# Timestamp:      2023-04-14T11:12:12.5320035+02:00
+# Level:          info
+# Message:        Sending data to server...   
+#################################################################
+# Log entry:      0015
+#
+# Timestamp:      2023-04-14T11:12:12.7817665+02:00
+# Level:          info
+# Message:        Data recieved from server. Returning response.   
+#################################################################
+# Log entry:      0016
+#
+# Timestamp:      2023-04-14T11:12:12.7817665+02:00
+# Level:          info
+# Message:        Printing headers...   
+#################################################################
+# Log entry:      0017
+#
+# Timestamp:      2023-04-14T11:12:12.7817665+02:00
+# Level:          info
+# Message:        Printing data...   
+#################################################################
+# Log entry:      0018
+#
+# Timestamp:      2023-04-14T11:12:20.2357539+02:00
+# Level:          info
+# Message:        Calculator menu displayed.   
+#################################################################
+# Log entry:      0019
+#
+# Timestamp:      2023-04-14T11:12:20.2357539+02:00
+# Level:          info
+# Message:        Operation selected: mult   
+#################################################################
+# Log entry:      0020
+#
+# Timestamp:      2023-04-14T11:12:20.2357539+02:00
+# Level:          info
+# Message:        User inputting data...   
+#################################################################
+# Log entry:      0021
+#
+# Timestamp:      2023-04-14T11:12:24.4196585+02:00
+# Level:          info
+# Message:        Validating input...   
+#################################################################
+# Log entry:      0022
+#
+# Timestamp:      2023-04-14T11:12:24.4196585+02:00
+# Level:          info
+# Message:        Validation successful. The input is valid.   
+#################################################################
+# Log entry:      0023
+#
+# Timestamp:      2023-04-14T11:12:24.4196585+02:00
+# Level:          info
+# Message:        Returning validated data...   
+#################################################################
+# Log entry:      0024
+#
+# Timestamp:      2023-04-14T11:12:24.4196585+02:00
+# Level:          info
+# Message:        Building request...   
+#################################################################
+# Log entry:      0025
+#
+# Timestamp:      2023-04-14T11:12:24.4196585+02:00
+# Level:          info
+# Message:        Request built.   
+#################################################################
+# Log entry:      0026
+#
+# Timestamp:      2023-04-14T11:12:24.4196585+02:00
+# Level:          info
+# Message:        Setting request headers...   
+#################################################################
+# Log entry:      0027
+#
+# Timestamp:      2023-04-14T11:12:24.4196585+02:00
+# Level:          info
+# Message:        Setting request body...   
+#################################################################
+# Log entry:      0028
+#
+# Timestamp:      2023-04-14T11:12:24.4196585+02:00
+# Level:          info
+# Message:        Sending data to server...   
+#################################################################
+# Log entry:      0029
+#
+# Timestamp:      2023-04-14T11:12:24.4342660+02:00
+# Level:          info
+# Message:        Data recieved from server. Returning response.   
+#################################################################
+# Log entry:      0030
+#
+# Timestamp:      2023-04-14T11:12:24.4342660+02:00
+# Level:          info
+# Message:        Printing headers...   
+#################################################################
+# Log entry:      0031
+#
+# Timestamp:      2023-04-14T11:12:24.4342660+02:00
+# Level:          info
+# Message:        Printing data...   
+#################################################################
+# Log entry:      0032
+#
+# Timestamp:      2023-04-14T11:12:33.2919606+02:00
+# Level:          info
+# Message:        Calculator menu displayed.   
+#################################################################
+# Log entry:      0033
+#
+# Timestamp:      2023-04-14T11:12:33.2919606+02:00
+# Level:          info
+# Message:        Operation selected: sqrt   
+#################################################################
+# Log entry:      0034
+#
+# Timestamp:      2023-04-14T11:12:33.2919606+02:00
+# Level:          info
+# Message:        User inputting data...   
+#################################################################
+# Log entry:      0035
+#
+# Timestamp:      2023-04-14T11:12:39.8606638+02:00
+# Level:          info
+# Message:        Validating input...   
+#################################################################
+# Log entry:      0036
+#
+# Timestamp:      2023-04-14T11:12:39.8606638+02:00
+# Level:          info
+# Message:        Validation successful. The input is valid.   
+#################################################################
+# Log entry:      0037
+#
+# Timestamp:      2023-04-14T11:12:39.8606638+02:00
+# Level:          info
+# Message:        Returning validated data...   
+#################################################################
+# Log entry:      0038
+#
+# Timestamp:      2023-04-14T11:12:39.8606638+02:00
+# Level:          info
+# Message:        Building request...   
+#################################################################
+# Log entry:      0039
+#
+# Timestamp:      2023-04-14T11:12:39.8606638+02:00
+# Level:          info
+# Message:        Request built.   
+#################################################################
+# Log entry:      0040
+#
+# Timestamp:      2023-04-14T11:12:39.8606638+02:00
+# Level:          info
+# Message:        Setting request headers...   
+#################################################################
+# Log entry:      0041
+#
+# Timestamp:      2023-04-14T11:12:39.8606638+02:00
+# Level:          info
+# Message:        Setting request body...   
+#################################################################
+# Log entry:      0042
+#
+# Timestamp:      2023-04-14T11:12:39.8606638+02:00
+# Level:          info
+# Message:        Sending data to server...   
+#################################################################
+# Log entry:      0043
+#
+# Timestamp:      2023-04-14T11:12:39.8718669+02:00
+# Level:          info
+# Message:        Data recieved from server. Returning response.   
+#################################################################
+# Log entry:      0044
+#
+# Timestamp:      2023-04-14T11:12:39.8718669+02:00
+# Level:          info
+# Message:        Printing headers...   
+#################################################################
+# Log entry:      0045
+#
+# Timestamp:      2023-04-14T11:12:39.8718669+02:00
+# Level:          info
+# Message:        Printing data...   
+#################################################################
+# Log entry:      0046
+#
+# Timestamp:      2023-04-14T11:12:43.2361518+02:00
+# Level:          info
+# Message:        Calculator menu displayed.   
+#################################################################
+# Log entry:      0047
+#
+# Timestamp:      2023-04-14T11:12:43.2367429+02:00
+# Level:          info
+# Message:        Operation selected: sub   
+#################################################################
+# Log entry:      0048
+#
+# Timestamp:      2023-04-14T11:12:43.2367429+02:00
+# Level:          info
+# Message:        User inputting data...   
+#################################################################
+# Log entry:      0049
+#
+# Timestamp:      2023-04-14T11:12:45.6456364+02:00
+# Level:          info
+# Message:        Validating input...   
+#################################################################
+# Log entry:      0050
+#
+# Timestamp:      2023-04-14T11:12:45.6456364+02:00
+# Level:          info
+# Message:        Validation successful. The input is valid.   
+#################################################################
+# Log entry:      0051
+#
+# Timestamp:      2023-04-14T11:12:45.6456364+02:00
+# Level:          info
+# Message:        Returning validated data...   
+#################################################################
+# Log entry:      0052
+#
+# Timestamp:      2023-04-14T11:12:45.6456364+02:00
+# Level:          info
+# Message:        User inputting data...   
+#################################################################
+# Log entry:      0053
+#
+# Timestamp:      2023-04-14T11:12:46.8833504+02:00
+# Level:          info
+# Message:        Validating input...   
+#################################################################
+# Log entry:      0054
+#
+# Timestamp:      2023-04-14T11:12:46.8833504+02:00
+# Level:          info
+# Message:        Validation successful. The input is valid.   
+#################################################################
+# Log entry:      0055
+#
+# Timestamp:      2023-04-14T11:12:46.8833504+02:00
+# Level:          error
+# Message:        The inputted divisor was zero.   
+#################################################################
+# Log entry:      0056
+#
+# Timestamp:      2023-04-14T11:12:49.1800716+02:00
+# Level:          info
+# Message:        Validating input...   
+#################################################################
+# Log entry:      0057
+#
+# Timestamp:      2023-04-14T11:12:49.1800716+02:00
+# Level:          info
+# Message:        Validation successful. The input is valid.   
+#################################################################
+# Log entry:      0058
+#
+# Timestamp:      2023-04-14T11:12:49.1800716+02:00
+# Level:          info
+# Message:        Returning validated data...   
+#################################################################
+# Log entry:      0059
+#
+# Timestamp:      2023-04-14T11:12:49.1800716+02:00
+# Level:          info
+# Message:        Building request...   
+#################################################################
+# Log entry:      0060
+#
+# Timestamp:      2023-04-14T11:12:49.1800716+02:00
+# Level:          info
+# Message:        Request built.   
+#################################################################
+# Log entry:      0061
+#
+# Timestamp:      2023-04-14T11:12:49.1800716+02:00
+# Level:          info
+# Message:        Setting request headers...   
+#################################################################
+# Log entry:      0062
+#
+# Timestamp:      2023-04-14T11:12:49.1800716+02:00
+# Level:          info
+# Message:        Setting request body...   
+#################################################################
+# Log entry:      0063
+#
+# Timestamp:      2023-04-14T11:12:49.1800716+02:00
+# Level:          info
+# Message:        Sending data to server...   
+#################################################################
+# Log entry:      0064
+#
+# Timestamp:      2023-04-14T11:12:49.2013263+02:00
+# Level:          info
+# Message:        Data recieved from server. Returning response.   
+#################################################################
+# Log entry:      0065
+#
+# Timestamp:      2023-04-14T11:12:49.2013263+02:00
+# Level:          info
+# Message:        Printing headers...   
+#################################################################
+# Log entry:      0066
+#
+# Timestamp:      2023-04-14T11:12:49.2013263+02:00
+# Level:          info
+# Message:        Printing data...   
+#################################################################
+# Log entry:      0067
+#
+# Timestamp:      2023-04-14T11:12:55.2293516+02:00
+# Level:          info
+# Message:        Calculator menu displayed.   
+#################################################################
+# Log entry:      0068
+#
+# Timestamp:      2023-04-14T11:12:55.2293516+02:00
+# Level:          info
+# Message:        Operation selected: sub   
+#################################################################
+# Log entry:      0069
+#
+# Timestamp:      2023-04-14T11:12:55.2293516+02:00
+# Level:          info
+# Message:        User inputting data...   
+#################################################################
+# Log entry:      0070
+#
+# Timestamp:      2023-04-14T11:12:56.5796870+02:00
+# Level:          info
+# Message:        Validating input...   
+#################################################################
+# Log entry:      0071
+#
+# Timestamp:      2023-04-14T11:12:56.5796870+02:00
+# Level:          info
+# Message:        Validation successful. The input is valid.   
+#################################################################
+# Log entry:      0072
+#
+# Timestamp:      2023-04-14T11:12:56.5796870+02:00
+# Level:          info
+# Message:        Returning validated data...   
+#################################################################
+# Log entry:      0073
+#
+# Timestamp:      2023-04-14T11:12:56.5796870+02:00
+# Level:          info
+# Message:        User inputting data...   
+#################################################################
+# Log entry:      0074
+#
+# Timestamp:      2023-04-14T11:12:58.4197407+02:00
+# Level:          info
+# Message:        Validating input...   
+#################################################################
+# Log entry:      0075
+#
+# Timestamp:      2023-04-14T11:12:58.4197407+02:00
+# Level:          info
+# Message:        Validation successful. The input is valid.   
+#################################################################
+# Log entry:      0076
+#
+# Timestamp:      2023-04-14T11:12:58.4197407+02:00
+# Level:          info
+# Message:        Returning validated data...   
+#################################################################
+# Log entry:      0077
+#
+# Timestamp:      2023-04-14T11:12:58.4197407+02:00
+# Level:          info
+# Message:        Building request...   
+#################################################################
+# Log entry:      0078
+#
+# Timestamp:      2023-04-14T11:12:58.4197407+02:00
+# Level:          info
+# Message:        Request built.   
+#################################################################
+# Log entry:      0079
+#
+# Timestamp:      2023-04-14T11:12:58.4197407+02:00
+# Level:          info
+# Message:        Setting request headers...   
+#################################################################
+# Log entry:      0080
+#
+# Timestamp:      2023-04-14T11:12:58.4197407+02:00
+# Level:          info
+# Message:        Setting request body...   
+#################################################################
+# Log entry:      0081
+#
+# Timestamp:      2023-04-14T11:12:58.4197407+02:00
+# Level:          info
+# Message:        Sending data to server...   
+#################################################################
+# Log entry:      0082
+#
+# Timestamp:      2023-04-14T11:12:58.4422569+02:00
+# Level:          info
+# Message:        Data recieved from server. Returning response.   
+#################################################################
+# Log entry:      0083
+#
+# Timestamp:      2023-04-14T11:12:58.4422569+02:00
+# Level:          info
+# Message:        Printing headers...   
+#################################################################
+# Log entry:      0084
+#
+# Timestamp:      2023-04-14T11:12:58.4422569+02:00
+# Level:          info
+# Message:        Printing data...   
+#################################################################
+# Log entry:      0085
+#
+# Timestamp:      2023-04-14T11:13:01.5409606+02:00
+# Level:          info
+# Message:        Calculator menu displayed.   
+#################################################################
+# Log entry:      0086
+#
+# Timestamp:      2023-04-14T11:13:01.5409606+02:00
+# Level:          info
+# Message:        Operation selected: journal   
+#################################################################
+# Log entry:      0087
+#
+# Timestamp:      2023-04-14T11:13:01.5409606+02:00
+# Level:          info
+# Message:        Building request...   
+#################################################################
+# Log entry:      0088
+#
+# Timestamp:      2023-04-14T11:13:01.5409606+02:00
+# Level:          info
+# Message:        Request built.   
+#################################################################
+# Log entry:      0089
+#
+# Timestamp:      2023-04-14T11:13:01.5409606+02:00
+# Level:          info
+# Message:        Setting request headers...   
+#################################################################
+# Log entry:      0090
+#
+# Timestamp:      2023-04-14T11:13:01.5409606+02:00
+# Level:          info
+# Message:        Setting request body...   
+#################################################################
+# Log entry:      0091
+#
+# Timestamp:      2023-04-14T11:13:01.5409606+02:00
+# Level:          info
+# Message:        Sending data to server...   
+#################################################################
+# Log entry:      0092
+#
+# Timestamp:      2023-04-14T11:13:01.5548693+02:00
+# Level:          info
+# Message:        Data recieved from server. Returning response.   
+#################################################################
+# Log entry:      0093
+#
+# Timestamp:      2023-04-14T11:13:01.5548693+02:00
+# Level:          info
+# Message:        Printing data...   
+#################################################################
+# Log entry:      0001
+#
+# Timestamp:      2023-04-14T12:37:02.1447458+02:00
+# Level:          info
+# Message:        Client started.   
+#################################################################
+# Log entry:      0002
+#
+# Timestamp:      2023-04-14T12:37:02.1788215+02:00
+# Level:          info
+# Message:        Connecting to server with IP: http://localhost:5199   
+#################################################################
+# Log entry:      0003
+#
+# Timestamp:      2023-04-14T12:37:02.2109636+02:00
+# Level:          info
+# Message:        Selected method: Post.   
+#################################################################
+# Log entry:      0004
+#
+# Timestamp:      2023-04-14T12:41:16.8628648+02:00
+# Level:          info
+# Message:        Calculator menu displayed.   
+#################################################################
+# Log entry:      0005
+#
+# Timestamp:      2023-04-14T12:41:16.8671474+02:00
+# Level:          info
+# Message:        Operation selected: add   
+#################################################################
+# Log entry:      0006
+#
+# Timestamp:      2023-04-14T12:41:16.8671474+02:00
+# Level:          info
+# Message:        User inputting data...   
+#################################################################
+# Log entry:      0001
+#
+# Timestamp:      2023-04-14T12:52:14.1708817+02:00
+# Level:          info
+# Message:        Client started.   
+#################################################################
+# Log entry:      0002
+#
+# Timestamp:      2023-04-14T12:52:14.2052083+02:00
+# Level:          info
+# Message:        Connecting to server with IP: http://localhost:5199   
+#################################################################
+# Log entry:      0003
+#
+# Timestamp:      2023-04-14T12:52:14.2399311+02:00
+# Level:          info
+# Message:        Selected method: Post.   
+#################################################################
+# Log entry:      0004
+#
+# Timestamp:      2023-04-14T12:52:18.4628094+02:00
+# Level:          info
+# Message:        Calculator menu displayed.   
+#################################################################
+# Log entry:      0005
+#
+# Timestamp:      2023-04-14T12:52:18.4628094+02:00
+# Level:          info
+# Message:        Operation selected: add   
+#################################################################
+# Log entry:      0006
+#
+# Timestamp:      2023-04-14T12:52:18.4628094+02:00
+# Level:          info
+# Message:        User inputting data...   
+#################################################################
+# Log entry:      0007
+#
+# Timestamp:      2023-04-14T12:57:41.7600829+02:00
+# Level:          info
+# Message:        Validating input...   
+#################################################################
+# Log entry:      0008
+#
+# Timestamp:      2023-04-14T12:57:41.7600829+02:00
+# Level:          info
+# Message:        Validation successful. The input is valid.   
+#################################################################
+# Log entry:      0009
+#
+# Timestamp:      2023-04-14T12:57:41.7600829+02:00
+# Level:          info
+# Message:        Returning validated data...   
+#################################################################
+# Log entry:      0010
+#
+# Timestamp:      2023-04-14T12:57:41.7600829+02:00
+# Level:          info
+# Message:        Building request...   
+#################################################################
+# Log entry:      0011
+#
+# Timestamp:      2023-04-14T12:57:41.7600829+02:00
+# Level:          info
+# Message:        Request built.   
+#################################################################
+# Log entry:      0012
+#
+# Timestamp:      2023-04-14T12:57:41.7600829+02:00
+# Level:          info
+# Message:        Setting request headers...   
+#################################################################
+# Log entry:      0013
+#
+# Timestamp:      2023-04-14T12:57:41.7600829+02:00
+# Level:          info
+# Message:        Setting request body...   
+#################################################################
+# Log entry:      0014
+#
+# Timestamp:      2023-04-14T12:57:41.7664467+02:00
+# Level:          info
+# Message:        Sending data to server...   
+#################################################################
+# Log entry:      0015
+#
+# Timestamp:      2023-04-14T12:57:41.9634838+02:00
+# Level:          info
+# Message:        Data recieved from server. Returning response.   
+#################################################################
+# Log entry:      0016
+#
+# Timestamp:      2023-04-14T12:57:41.9634838+02:00
+# Level:          info
+# Message:        Printing headers...   
+#################################################################
+# Log entry:      0017
+#
+# Timestamp:      2023-04-14T12:57:41.9634838+02:00
+# Level:          info
+# Message:        Printing data...   
+#################################################################
+# Log entry:      0018
+#
+# Timestamp:      2023-04-14T13:00:18.5358718+02:00
+# Level:          info
+# Message:        Calculator menu displayed.   
+#################################################################
+# Log entry:      0019
+#
+# Timestamp:      2023-04-14T13:00:18.5358718+02:00
+# Level:          info
+# Message:        Operation selected: sub   
+#################################################################
+# Log entry:      0020
+#
+# Timestamp:      2023-04-14T13:00:18.5358718+02:00
+# Level:          info
+# Message:        User inputting data...   
+#################################################################
+# Log entry:      0021
+#
+# Timestamp:      2023-04-14T13:00:24.0713954+02:00
+# Level:          info
+# Message:        Validating input...   
+#################################################################
+# Log entry:      0022
+#
+# Timestamp:      2023-04-14T13:00:24.0713954+02:00
+# Level:          info
+# Message:        Validation successful. The input is valid.   
+#################################################################
+# Log entry:      0023
+#
+# Timestamp:      2023-04-14T13:00:24.0713954+02:00
+# Level:          info
+# Message:        Returning validated data...   
+#################################################################
+# Log entry:      0024
+#
+# Timestamp:      2023-04-14T13:00:24.0713954+02:00
+# Level:          info
+# Message:        User inputting data...   
+#################################################################
+# Log entry:      0025
+#
+# Timestamp:      2023-04-14T13:00:28.9916396+02:00
+# Level:          info
+# Message:        Validating input...   
+#################################################################
+# Log entry:      0026
+#
+# Timestamp:      2023-04-14T13:00:28.9916396+02:00
+# Level:          info
+# Message:        Validation successful. The input is valid.   
+#################################################################
+# Log entry:      0027
+#
+# Timestamp:      2023-04-14T13:00:28.9916396+02:00
+# Level:          info
+# Message:        Returning validated data...   
+#################################################################
+# Log entry:      0028
+#
+# Timestamp:      2023-04-14T13:00:28.9916396+02:00
+# Level:          info
+# Message:        Building request...   
+#################################################################
+# Log entry:      0029
+#
+# Timestamp:      2023-04-14T13:00:28.9916396+02:00
+# Level:          info
+# Message:        Request built.   
+#################################################################
+# Log entry:      0030
+#
+# Timestamp:      2023-04-14T13:00:28.9916396+02:00
+# Level:          info
+# Message:        Setting request headers...   
+#################################################################
+# Log entry:      0031
+#
+# Timestamp:      2023-04-14T13:00:28.9916396+02:00
+# Level:          info
+# Message:        Setting request body...   
+#################################################################
+# Log entry:      0032
+#
+# Timestamp:      2023-04-14T13:00:28.9916396+02:00
+# Level:          info
+# Message:        Sending data to server...   
+#################################################################
+# Log entry:      0033
+#
+# Timestamp:      2023-04-14T13:00:29.0131310+02:00
+# Level:          info
+# Message:        Data recieved from server. Returning response.   
+#################################################################
+# Log entry:      0034
+#
+# Timestamp:      2023-04-14T13:00:29.0131310+02:00
+# Level:          info
+# Message:        Printing headers...   
+#################################################################
+# Log entry:      0035
+#
+# Timestamp:      2023-04-14T13:00:29.0131310+02:00
+# Level:          info
+# Message:        Printing data...   
+#################################################################
+# Log entry:      0036
+#
+# Timestamp:      2023-04-14T13:01:29.7112962+02:00
+# Level:          info
+# Message:        Calculator menu displayed.   
+#################################################################
+# Log entry:      0037
+#
+# Timestamp:      2023-04-14T13:01:29.7112962+02:00
+# Level:          info
+# Message:        Operation selected: sub   
+#################################################################
+# Log entry:      0038
+#
+# Timestamp:      2023-04-14T13:01:29.7112962+02:00
+# Level:          info
+# Message:        User inputting data...   
+#################################################################
+# Log entry:      0039
+#
+# Timestamp:      2023-04-14T13:01:35.9431539+02:00
+# Level:          info
+# Message:        Validating input...   
+#################################################################
+# Log entry:      0040
+#
+# Timestamp:      2023-04-14T13:01:35.9431539+02:00
+# Level:          info
+# Message:        Validation successful. The input is valid.   
+#################################################################
+# Log entry:      0041
+#
+# Timestamp:      2023-04-14T13:01:35.9445345+02:00
+# Level:          info
+# Message:        Returning validated data...   
+#################################################################
+# Log entry:      0042
+#
+# Timestamp:      2023-04-14T13:01:35.9445345+02:00
+# Level:          info
+# Message:        User inputting data...   
+#################################################################
+# Log entry:      0043
+#
+# Timestamp:      2023-04-14T13:01:41.7195682+02:00
+# Level:          info
+# Message:        Validating input...   
+#################################################################
+# Log entry:      0044
+#
+# Timestamp:      2023-04-14T13:01:41.7195682+02:00
+# Level:          info
+# Message:        Validation successful. The input is valid.   
+#################################################################
+# Log entry:      0045
+#
+# Timestamp:      2023-04-14T13:01:41.7195682+02:00
+# Level:          info
+# Message:        Returning validated data...   
+#################################################################
+# Log entry:      0046
+#
+# Timestamp:      2023-04-14T13:01:41.7195682+02:00
+# Level:          info
+# Message:        Building request...   
+#################################################################
+# Log entry:      0047
+#
+# Timestamp:      2023-04-14T13:01:41.7195682+02:00
+# Level:          info
+# Message:        Request built.   
+#################################################################
+# Log entry:      0048
+#
+# Timestamp:      2023-04-14T13:01:41.7195682+02:00
+# Level:          info
+# Message:        Setting request headers...   
+#################################################################
+# Log entry:      0049
+#
+# Timestamp:      2023-04-14T13:01:41.7195682+02:00
+# Level:          info
+# Message:        Setting request body...   
+#################################################################
+# Log entry:      0050
+#
+# Timestamp:      2023-04-14T13:01:41.7195682+02:00
+# Level:          info
+# Message:        Sending data to server...   
+#################################################################
+# Log entry:      0051
+#
+# Timestamp:      2023-04-14T13:01:41.7195682+02:00
+# Level:          info
+# Message:        Data recieved from server. Returning response.   
+#################################################################
+# Log entry:      0052
+#
+# Timestamp:      2023-04-14T13:01:41.7195682+02:00
+# Level:          info
+# Message:        Printing headers...   
+#################################################################
+# Log entry:      0053
+#
+# Timestamp:      2023-04-14T13:01:41.7195682+02:00
+# Level:          info
+# Message:        Printing data...   
+#################################################################
+# Log entry:      0054
+#
+# Timestamp:      2023-04-14T13:03:19.1608967+02:00
+# Level:          info
+# Message:        Calculator menu displayed.   
+#################################################################
+# Log entry:      0055
+#
+# Timestamp:      2023-04-14T13:03:19.1608967+02:00
+# Level:          info
+# Message:        Operation selected: mult   
+#################################################################
+# Log entry:      0056
+#
+# Timestamp:      2023-04-14T13:03:19.1608967+02:00
+# Level:          info
+# Message:        User inputting data...   
+#################################################################
+# Log entry:      0057
+#
+# Timestamp:      2023-04-14T13:05:01.4869836+02:00
+# Level:          info
+# Message:        Validating input...   
+#################################################################
+# Log entry:      0058
+#
+# Timestamp:      2023-04-14T13:05:01.4869836+02:00
+# Level:          info
+# Message:        Validation successful. The input is valid.   
+#################################################################
+# Log entry:      0059
+#
+# Timestamp:      2023-04-14T13:05:01.4869836+02:00
+# Level:          info
+# Message:        Returning validated data...   
+#################################################################
+# Log entry:      0060
+#
+# Timestamp:      2023-04-14T13:05:01.4869836+02:00
+# Level:          info
+# Message:        Building request...   
+#################################################################
+# Log entry:      0061
+#
+# Timestamp:      2023-04-14T13:05:01.4869836+02:00
+# Level:          info
+# Message:        Request built.   
+#################################################################
+# Log entry:      0062
+#
+# Timestamp:      2023-04-14T13:05:01.4869836+02:00
+# Level:          info
+# Message:        Setting request headers...   
+#################################################################
+# Log entry:      0063
+#
+# Timestamp:      2023-04-14T13:05:01.4869836+02:00
+# Level:          info
+# Message:        Setting request body...   
+#################################################################
+# Log entry:      0064
+#
+# Timestamp:      2023-04-14T13:05:01.4869836+02:00
+# Level:          info
+# Message:        Sending data to server...   
+#################################################################
+# Log entry:      0065
+#
+# Timestamp:      2023-04-14T13:05:01.5043898+02:00
+# Level:          info
+# Message:        Data recieved from server. Returning response.   
+#################################################################
+# Log entry:      0066
+#
+# Timestamp:      2023-04-14T13:05:01.5043898+02:00
+# Level:          info
+# Message:        Printing headers...   
+#################################################################
+# Log entry:      0067
+#
+# Timestamp:      2023-04-14T13:05:01.5052693+02:00
+# Level:          info
+# Message:        Printing data...   
+#################################################################
+# Log entry:      0068
+#
+# Timestamp:      2023-04-14T13:06:36.7288428+02:00
+# Level:          info
+# Message:        Calculator menu displayed.   
+#################################################################
+# Log entry:      0069
+#
+# Timestamp:      2023-04-14T13:06:36.7288428+02:00
+# Level:          info
+# Message:        Operation selected: sub   
+#################################################################
+# Log entry:      0070
+#
+# Timestamp:      2023-04-14T13:06:36.7288428+02:00
+# Level:          info
+# Message:        User inputting data...   
+#################################################################
+# Log entry:      0071
+#
+# Timestamp:      2023-04-14T13:06:50.2242040+02:00
+# Level:          info
+# Message:        Validating input...   
+#################################################################
+# Log entry:      0072
+#
+# Timestamp:      2023-04-14T13:06:50.2242040+02:00
+# Level:          info
+# Message:        Validation successful. The input is valid.   
+#################################################################
+# Log entry:      0073
+#
+# Timestamp:      2023-04-14T13:06:50.2242040+02:00
+# Level:          info
+# Message:        Returning validated data...   
+#################################################################
+# Log entry:      0074
+#
+# Timestamp:      2023-04-14T13:06:50.2242040+02:00
+# Level:          info
+# Message:        User inputting data...   
+#################################################################
+# Log entry:      0075
+#
+# Timestamp:      2023-04-14T13:10:07.5028591+02:00
+# Level:          info
+# Message:        Validating input...   
+#################################################################
+# Log entry:      0076
+#
+# Timestamp:      2023-04-14T13:10:07.5028591+02:00
+# Level:          info
+# Message:        Validation successful. The input is valid.   
+#################################################################
+# Log entry:      0077
+#
+# Timestamp:      2023-04-14T13:10:07.5028591+02:00
+# Level:          info
+# Message:        Returning validated data...   
+#################################################################
+# Log entry:      0078
+#
+# Timestamp:      2023-04-14T13:10:07.5028591+02:00
+# Level:          info
+# Message:        Building request...   
+#################################################################
+# Log entry:      0079
+#
+# Timestamp:      2023-04-14T13:10:07.5039356+02:00
+# Level:          info
+# Message:        Request built.   
+#################################################################
+# Log entry:      0080
+#
+# Timestamp:      2023-04-14T13:10:07.5039356+02:00
+# Level:          info
+# Message:        Setting request headers...   
+#################################################################
+# Log entry:      0081
+#
+# Timestamp:      2023-04-14T13:10:07.5039356+02:00
+# Level:          info
+# Message:        Setting request body...   
+#################################################################
+# Log entry:      0082
+#
+# Timestamp:      2023-04-14T13:10:07.5039356+02:00
+# Level:          info
+# Message:        Sending data to server...   
+#################################################################
+# Log entry:      0083
+#
+# Timestamp:      2023-04-14T13:10:07.5243691+02:00
+# Level:          info
+# Message:        Data recieved from server. Returning response.   
+#################################################################
+# Log entry:      0084
+#
+# Timestamp:      2023-04-14T13:10:07.5243691+02:00
+# Level:          info
+# Message:        Printing headers...   
+#################################################################
+# Log entry:      0085
+#
+# Timestamp:      2023-04-14T13:10:07.5243691+02:00
+# Level:          info
+# Message:        Printing data...   
+#################################################################
+# Log entry:      0086
+#
+# Timestamp:      2023-04-14T13:11:21.8329469+02:00
+# Level:          info
+# Message:        Calculator menu displayed.   
+#################################################################
+# Log entry:      0087
+#
+# Timestamp:      2023-04-14T13:11:21.8329469+02:00
+# Level:          info
+# Message:        Operation selected: sqrt   
+#################################################################
+# Log entry:      0088
+#
+# Timestamp:      2023-04-14T13:11:21.8329469+02:00
+# Level:          info
+# Message:        User inputting data...   
+#################################################################
+# Log entry:      0089
+#
+# Timestamp:      2023-04-14T13:11:27.1921888+02:00
+# Level:          info
+# Message:        Validating input...   
+#################################################################
+# Log entry:      0090
+#
+# Timestamp:      2023-04-14T13:11:27.1921888+02:00
+# Level:          info
+# Message:        Validation successful. The input is valid.   
+#################################################################
+# Log entry:      0091
+#
+# Timestamp:      2023-04-14T13:11:27.1921888+02:00
+# Level:          info
+# Message:        Returning validated data...   
+#################################################################
+# Log entry:      0092
+#
+# Timestamp:      2023-04-14T13:11:27.1921888+02:00
+# Level:          info
+# Message:        Building request...   
+#################################################################
+# Log entry:      0093
+#
+# Timestamp:      2023-04-14T13:11:27.1921888+02:00
+# Level:          info
+# Message:        Request built.   
+#################################################################
+# Log entry:      0094
+#
+# Timestamp:      2023-04-14T13:11:27.1921888+02:00
+# Level:          info
+# Message:        Setting request headers...   
+#################################################################
+# Log entry:      0095
+#
+# Timestamp:      2023-04-14T13:11:27.1921888+02:00
+# Level:          info
+# Message:        Setting request body...   
+#################################################################
+# Log entry:      0096
+#
+# Timestamp:      2023-04-14T13:11:27.1921888+02:00
+# Level:          info
+# Message:        Sending data to server...   
+#################################################################
+# Log entry:      0097
+#
+# Timestamp:      2023-04-14T13:11:27.1921888+02:00
+# Level:          info
+# Message:        Data recieved from server. Returning response.   
+#################################################################
+# Log entry:      0098
+#
+# Timestamp:      2023-04-14T13:11:27.1921888+02:00
+# Level:          info
+# Message:        Printing headers...   
+#################################################################
+# Log entry:      0099
+#
+# Timestamp:      2023-04-14T13:11:27.2057120+02:00
+# Level:          info
+# Message:        Printing data...   
+#################################################################
+# Log entry:      0100
+#
+# Timestamp:      2023-04-14T13:16:36.0332953+02:00
+# Level:          info
+# Message:        Calculator menu displayed.   
+#################################################################
+# Log entry:      0101
+#
+# Timestamp:      2023-04-14T13:16:36.0332953+02:00
+# Level:          info
+# Message:        Operation selected: journal   
+#################################################################
+# Log entry:      0102
+#
+# Timestamp:      2023-04-14T13:16:36.0332953+02:00
+# Level:          info
+# Message:        Building request...   
+#################################################################
+# Log entry:      0103
+#
+# Timestamp:      2023-04-14T13:16:36.0332953+02:00
+# Level:          info
+# Message:        Request built.   
+#################################################################
+# Log entry:      0104
+#
+# Timestamp:      2023-04-14T13:16:36.0332953+02:00
+# Level:          info
+# Message:        Setting request headers...   
+#################################################################
+# Log entry:      0105
+#
+# Timestamp:      2023-04-14T13:16:36.0332953+02:00
+# Level:          info
+# Message:        Setting request body...   
+#################################################################
+# Log entry:      0106
+#
+# Timestamp:      2023-04-14T13:16:36.0332953+02:00
+# Level:          info
+# Message:        Sending data to server...   
+#################################################################
+# Log entry:      0107
+#
+# Timestamp:      2023-04-14T13:16:36.0507320+02:00
+# Level:          info
+# Message:        Data recieved from server. Returning response.   
+#################################################################
+# Log entry:      0108
+#
+# Timestamp:      2023-04-14T13:16:36.0507320+02:00
+# Level:          info
+# Message:        Printing data...   
