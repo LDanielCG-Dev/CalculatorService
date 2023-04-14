@@ -586,3 +586,309 @@
 # Timestamp:      2023-04-14T11:13:01.5486520+02:00
 # Level:          info
 # Message:        Checking TrackingID...   
+#################################################################
+# Log entry:      0001
+#
+# Timestamp:      2023-04-14T12:57:41.9104657+02:00
+# Level:          info
+# Message:        Recieved request for operation: add.   
+#################################################################
+# Log entry:      0002
+#
+# Timestamp:      2023-04-14T12:57:41.9236635+02:00
+# Level:          info
+# Message:        Validating...   
+#################################################################
+# Log entry:      0003
+#
+# Timestamp:      2023-04-14T12:57:41.9236635+02:00
+# Level:          info
+# Message:        VALID: All the data is valid.   
+#################################################################
+# Log entry:      0004
+#
+# Timestamp:      2023-04-14T12:57:41.9236635+02:00
+# Level:          info
+# Message:        Calculating...   
+#################################################################
+# Log entry:      0005
+#
+# Timestamp:      2023-04-14T12:57:41.9236635+02:00
+# Level:          info
+# Message:        The result of 2+2.53+532 is 536.53.   
+#################################################################
+# Log entry:      0006
+#
+# Timestamp:      2023-04-14T12:57:41.9395361+02:00
+# Level:          info
+# Message:        Adding operation to journal with tracking id 2924...   
+#################################################################
+# Log entry:      0007
+#
+# Timestamp:      2023-04-14T12:57:41.9395361+02:00
+# Level:          info
+# Message:        Operation added to journal successfully.   
+#################################################################
+# Log entry:      0008
+#
+# Timestamp:      2023-04-14T12:57:41.9395361+02:00
+# Level:          info
+# Message:        Sending response back.   
+#################################################################
+# Log entry:      0009
+#
+# Timestamp:      2023-04-14T13:00:29.0059611+02:00
+# Level:          info
+# Message:        Recieved request for operation: sub.   
+#################################################################
+# Log entry:      0010
+#
+# Timestamp:      2023-04-14T13:00:29.0059611+02:00
+# Level:          info
+# Message:        Validating...   
+#################################################################
+# Log entry:      0011
+#
+# Timestamp:      2023-04-14T13:00:29.0059611+02:00
+# Level:          info
+# Message:        VALID: All the data is valid.   
+#################################################################
+# Log entry:      0012
+#
+# Timestamp:      2023-04-14T13:00:29.0094308+02:00
+# Level:          debug
+# Message:        Calculating...   
+#################################################################
+# Log entry:      0013
+#
+# Timestamp:      2023-04-14T13:00:29.0094308+02:00
+# Level:          info
+# Message:        The result of 10-5.2 is 4.8.   
+#################################################################
+# Log entry:      0014
+#
+# Timestamp:      2023-04-14T13:00:29.0094308+02:00
+# Level:          info
+# Message:        Adding operation to journal with tracking id 2924...   
+#################################################################
+# Log entry:      0015
+#
+# Timestamp:      2023-04-14T13:00:29.0094308+02:00
+# Level:          info
+# Message:        Operation added to journal successfully.   
+#################################################################
+# Log entry:      0016
+#
+# Timestamp:      2023-04-14T13:01:41.7241309+02:00
+# Level:          info
+# Message:        Recieved request for operation: sub.   
+#################################################################
+# Log entry:      0017
+#
+# Timestamp:      2023-04-14T13:01:41.7241309+02:00
+# Level:          info
+# Message:        Validating...   
+#################################################################
+# Log entry:      0018
+#
+# Timestamp:      2023-04-14T13:01:41.7241309+02:00
+# Level:          info
+# Message:        VALID: All the data is valid.   
+#################################################################
+# Log entry:      0019
+#
+# Timestamp:      2023-04-14T13:01:41.7241309+02:00
+# Level:          debug
+# Message:        Calculating...   
+#################################################################
+# Log entry:      0020
+#
+# Timestamp:      2023-04-14T13:01:41.7241309+02:00
+# Level:          info
+# Message:        The result of 512-12 is 500.   
+#################################################################
+# Log entry:      0021
+#
+# Timestamp:      2023-04-14T13:01:41.7241309+02:00
+# Level:          info
+# Message:        Adding operation to journal with tracking id 2924...   
+#################################################################
+# Log entry:      0022
+#
+# Timestamp:      2023-04-14T13:01:41.7241309+02:00
+# Level:          info
+# Message:        Operation added to journal successfully.   
+#################################################################
+# Log entry:      0023
+#
+# Timestamp:      2023-04-14T13:05:01.4958434+02:00
+# Level:          info
+# Message:        Recieved request for operation: mult.   
+#################################################################
+# Log entry:      0024
+#
+# Timestamp:      2023-04-14T13:05:01.4958434+02:00
+# Level:          info
+# Message:        Validating...   
+#################################################################
+# Log entry:      0025
+#
+# Timestamp:      2023-04-14T13:05:01.4958434+02:00
+# Level:          info
+# Message:        VALID: All the data is valid.   
+#################################################################
+# Log entry:      0026
+#
+# Timestamp:      2023-04-14T13:05:01.4958434+02:00
+# Level:          info
+# Message:        Calculating...   
+#################################################################
+# Log entry:      0027
+#
+# Timestamp:      2023-04-14T13:05:01.4958434+02:00
+# Level:          info
+# Message:        The result of 2*2*3 is 12.   
+#################################################################
+# Log entry:      0028
+#
+# Timestamp:      2023-04-14T13:05:01.4958434+02:00
+# Level:          info
+# Message:        Adding operation to journal with tracking id 2924...   
+#################################################################
+# Log entry:      0029
+#
+# Timestamp:      2023-04-14T13:05:01.4958434+02:00
+# Level:          info
+# Message:        Operation added to journal successfully.   
+#################################################################
+# Log entry:      0030
+#
+# Timestamp:      2023-04-14T13:05:01.4958434+02:00
+# Level:          info
+# Message:        Sending response back.   
+#################################################################
+# Log entry:      0031
+#
+# Timestamp:      2023-04-14T13:10:07.5147881+02:00
+# Level:          info
+# Message:        Recieved request for operation: div.   
+#################################################################
+# Log entry:      0032
+#
+# Timestamp:      2023-04-14T13:10:07.5147881+02:00
+# Level:          info
+# Message:        Validating...   
+#################################################################
+# Log entry:      0033
+#
+# Timestamp:      2023-04-14T13:10:07.5147881+02:00
+# Level:          info
+# Message:        VALID: All the data is valid.   
+#################################################################
+# Log entry:      0034
+#
+# Timestamp:      2023-04-14T13:10:07.5147881+02:00
+# Level:          debug
+# Message:        Calculating...   
+#################################################################
+# Log entry:      0035
+#
+# Timestamp:      2023-04-14T13:10:07.5147881+02:00
+# Level:          info
+# Message:        The result of 245/3 is System.Collections.Generic.List`1[System.Int32].   
+#################################################################
+# Log entry:      0036
+#
+# Timestamp:      2023-04-14T13:10:07.5196522+02:00
+# Level:          info
+# Message:        Adding operation to journal with tracking id 2924...   
+#################################################################
+# Log entry:      0037
+#
+# Timestamp:      2023-04-14T13:10:07.5196522+02:00
+# Level:          info
+# Message:        Operation added to journal successfully.   
+#################################################################
+# Log entry:      0038
+#
+# Timestamp:      2023-04-14T13:10:07.5196522+02:00
+# Level:          info
+# Message:        Sending response back.   
+#################################################################
+# Log entry:      0039
+#
+# Timestamp:      2023-04-14T13:11:27.1969292+02:00
+# Level:          info
+# Message:        Recieved request for operation: sqrt.   
+#################################################################
+# Log entry:      0040
+#
+# Timestamp:      2023-04-14T13:11:27.1969292+02:00
+# Level:          info
+# Message:        Validating...   
+#################################################################
+# Log entry:      0041
+#
+# Timestamp:      2023-04-14T13:11:27.1969292+02:00
+# Level:          info
+# Message:        VALID: All the data is valid.   
+#################################################################
+# Log entry:      0042
+#
+# Timestamp:      2023-04-14T13:11:27.1969292+02:00
+# Level:          debug
+# Message:        Calculating...   
+#################################################################
+# Log entry:      0043
+#
+# Timestamp:      2023-04-14T13:11:27.1969292+02:00
+# Level:          info
+# Message:        The result of √22 is 4.69.   
+#################################################################
+# Log entry:      0044
+#
+# Timestamp:      2023-04-14T13:11:27.1969292+02:00
+# Level:          info
+# Message:        Adding operation to journal with tracking id 2924...   
+#################################################################
+# Log entry:      0045
+#
+# Timestamp:      2023-04-14T13:11:27.1969292+02:00
+# Level:          info
+# Message:        Operation added to journal successfully.   
+#################################################################
+# Log entry:      0046
+#
+# Timestamp:      2023-04-14T13:11:27.1969292+02:00
+# Level:          info
+# Message:        Sending response back.   
+#################################################################
+# Log entry:      0047
+#
+# Timestamp:      2023-04-14T13:16:36.0420594+02:00
+# Level:          info
+# Message:        Recieved request for operation: Journal.   
+#################################################################
+# Log entry:      0048
+#
+# Timestamp:      2023-04-14T13:16:36.0420594+02:00
+# Level:          info
+# Message:        Validating TrackingID...   
+#################################################################
+# Log entry:      0049
+#
+# Timestamp:      2023-04-14T13:16:36.0420594+02:00
+# Level:          info
+# Message:        Checking TrackingID...   
+#################################################################
+# Log entry:      0050
+#
+# Timestamp:      2023-04-14T13:16:36.0420594+02:00
+# Level:          info
+# Message:        Adding records to journal...   
+#################################################################
+# Log entry:      0051
+#
+# Timestamp:      2023-04-14T13:16:36.0420594+02:00
+# Level:          info
+# Message:        Sending response back.   

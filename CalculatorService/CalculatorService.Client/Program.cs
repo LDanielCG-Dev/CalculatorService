@@ -345,7 +345,7 @@ namespace CalculatorService.Client
 						int dividend = GetUserInputInt();
 
 						// Input divisor
-						Console.WriteLine("Entero divisor:");
+						Console.WriteLine("Enter divisor:");
 						int divisor = GetUserInputInt(divisor: true);
 
 						// Data is sent and recieved
