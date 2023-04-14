@@ -23,18 +23,24 @@ namespace CalculatorService.ServerAPI.Controllers
 
 		public static bool IsValid(this DivisionRequest @this)
 		{
+			_logger.LogInfo("Validating...");
 			if (@this == null || @this.Divisor.ToString() == "0")
 			{
+				_logger.LogError("INVALID: The data is null or the divisor is zero.");
 				return false;
 			}
 
 			const int MAX_DIGITS = 9;
-			if (@this.Dividend.ToString().Length > MAX_DIGITS || @this.Divisor.ToString().Length > MAX_DIGITS)
+			var dataIsNotInt = !int.TryParse(@this.Dividend.ToString(), out int dividendParsed) || !int.TryParse(@this.Divisor.ToString(), out int divisorParsed);
+			var dataTooLong = @this.Dividend.ToString().Length > MAX_DIGITS || @this.Divisor.ToString().Length > MAX_DIGITS;
+
+			if (dataIsNotInt || dataTooLong)
 			{
+				_logger.LogError($"INVALID: The number lenght is larger than {MAX_DIGITS} or is not a digit.");
 				return false;
 			}
-
-			return int.TryParse(@this.Dividend.ToString(), out int dividendParsed) && int.TryParse(@this.Divisor.ToString(), out int divisorParsed);
+			_logger.LogInfo("VALID: All the data is valid.");
+			return true;
 		}
 
 		public static bool IsEmpty(this DivisionRequest @this)

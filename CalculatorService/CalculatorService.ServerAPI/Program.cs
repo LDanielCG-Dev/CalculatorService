@@ -1,7 +1,7 @@
 using CalculatorService.Models;
-using LoggerService;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
+using LoggerService;
 using NLog;
 
 namespace CalculatorService.ServerAPI

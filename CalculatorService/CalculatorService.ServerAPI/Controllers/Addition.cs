@@ -40,6 +40,6 @@ namespace CalculatorService.ServerAPI.Controllers
 		}
 
 		public static bool IsEmpty(this AdditionRequest @this)
-			=> @this.GetType().GetProperties().All(prop => prop.GetValue(@this) == null || (prop.PropertyType == typeof(int?) && (int?)prop.GetValue(@this) == 0));
+			=> @this.GetType().GetProperties().All(prop => prop.GetValue(@this) == null);
 	}
 }
