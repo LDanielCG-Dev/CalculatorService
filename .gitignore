@@ -5,8 +5,10 @@
 /CalculatorService/.vs
 /CalculatorService/CalculatorService.Client/bin
 /CalculatorService/CalculatorService.Client/obj
+/CalculatorService/CalculatorService.Client/Logs
 /CalculatorService/CalculatorService.ServerAPI/bin
 /CalculatorService/CalculatorService.ServerAPI/obj
+/CalculatorService/CalculatorService.ServerAPI/Logs
 /CalculatorService/CalculatorService.Models/bin
 /CalculatorService/CalculatorService.Models/obj
 /.vs
