@@ -1,16 +1,20 @@
-﻿using LoggerService;
+﻿using NLog;
 
 namespace CalculatorService.Models
 {
 	public class SquareRootResponse
 	{
-		private static readonly ILoggerManager _logger = new LoggerManager();
+		private static ILogger _logger = LogManager.GetCurrentClassLogger();
 		public double Square { get; set; }
 
 		public static SquareRootResponse FromSquareRoot(double square)
 		{
-			_logger.LogInfo("Sending response back.");
+			_logger.Info("Sending response back.");
 			return new SquareRootResponse { Square = square };
+		}
+		public override string ToString()
+		{
+			return $"{nameof(Square)}: {Square}";
 		}
 	}
 }

@@ -1,6 +1,0 @@
-"0001": {"Timestamp": "2023-04-11T17:39:37.4728267+02:00", "Level": "info", "Message": "Operation selected: Add."},
-"0002": {"Timestamp": "2023-04-11T17:39:37.4961473+02:00", "Level": "info", "Message": "TrackingID: 3030."},
-"0003": {"Timestamp": "2023-04-11T17:39:37.4961473+02:00", "Level": "debug", "Message": "Adding 1+2+3..."},
-"0004": {"Timestamp": "2023-04-11T17:39:37.4961473+02:00", "Level": "debug", "Message": "The result of 1+2+3 is 6."},
-"0005": {"Timestamp": "2023-04-11T17:39:37.4961473+02:00", "Level": "info", "Message": "Adding operation to journal..."},
-"0006": {"Timestamp": "2023-04-11T17:39:37.4961473+02:00", "Level": "info", "Message": "Operation added to journal successfully."},

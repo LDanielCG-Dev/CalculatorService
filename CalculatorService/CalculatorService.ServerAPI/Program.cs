@@ -1,7 +1,6 @@
 using CalculatorService.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
-using LoggerService;
 using NLog;
 
 namespace CalculatorService.ServerAPI
@@ -13,8 +12,6 @@ namespace CalculatorService.ServerAPI
 			var builder = WebApplication.CreateBuilder(args);
 
 			LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
-
-			builder.Services.AddScoped<ILoggerManager, LoggerManager>();
 
 			// Add services to the container.
 			builder.Services.AddControllers()

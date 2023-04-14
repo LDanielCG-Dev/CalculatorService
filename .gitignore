@@ -2,13 +2,15 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
+/.vs
 /CalculatorService/.vs
 /CalculatorService/CalculatorService.Client/bin
 /CalculatorService/CalculatorService.Client/obj
+/CalculatorService/CalculatorService.Client/Logs
 /CalculatorService/CalculatorService.ServerAPI/bin
 /CalculatorService/CalculatorService.ServerAPI/obj
+/CalculatorService/CalculatorService.ServerAPI/Logs
 /CalculatorService/CalculatorService.Models/bin
 /CalculatorService/CalculatorService.Models/obj
-/.vs
-/CalculatorService/LoggerService/bin/Debug/net6.0
-/CalculatorService/LoggerService/obj
+/CalculatorService/CalculatorService.Utils/bin
+/CalculatorService/CalculatorService.Utils/obj

@@ -1,7 +1,7 @@
-﻿using CalculatorService.Models;
-using LoggerService;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using CalculatorService.Models;
+using NLog;
 
 namespace CalculatorService.ServerAPI.Controllers
 {
@@ -11,220 +11,209 @@ namespace CalculatorService.ServerAPI.Controllers
 	[NullExceptionFilter]
 	public class CalculatorController : ControllerBase
 	{
+		private static readonly NLog.ILogger _logger = LogManager.GetCurrentClassLogger();
 		private string _trackingId = "";
-		private string _operation = "";
 		private string _calculation = "";
-		private const string _trackingIdName = "X-Evi-Tracking-Id";
 
-		private static readonly ILoggerManager _logger = new LoggerManager();
+		private const string TRACKING_ID_NAME = "X-Evi-Tracking-Id";
+		private const string ADD = "add";
+		private const string SUB = "sub";
+		private const string MULT = "mult";
+		private const string DIV = "div";
+		private const string SQRT = "sqrt";
+		private const string JOURNAL_QUERY = "journal/query";
 
+		public static CalculatorBadRequest ThrowBadRequest400(string errorKey, string errorMessage = "The request that was sent is not valid, is null or it's empty.")
+		{
+			_logger.Error("ERROR 400: BadRequest. {0}", errorMessage);
+
+			var modelState = new ModelStateDictionary();
+			modelState.AddModelError(errorKey, errorMessage);
+			return new CalculatorBadRequest(modelState);
+		}
 		// ipaddress/Calculator/add
-		[HttpPost("add")]
+		[HttpPost(ADD)]
 		public ActionResult<AdditionResponse> Add(AdditionRequest request)
 		{
-			_operation = "add";
-			_logger.LogInfo($"Recieved request for operation: {_operation}.");
+			_logger.Info("Recieved request for operation: {0}.", ADD);
 
 			// Check if the request is null or empty and returns a BadRequest 400 response
-			if (request == null || request.IsEmpty())
+			if (string.IsNullOrWhiteSpace(request?.Addends.ToString()))
 			{
-				var errorKey = "addends";
-				return BadRequest(ThrowBadRequest400(errorKey));
+				return BadRequest(ThrowBadRequest400(ADD));
 			}
 
-			if (request.IsValid() & !string.IsNullOrEmpty(HttpContext.Request.Headers[_trackingIdName]))
+			if (request.IsValid() & !string.IsNullOrEmpty(HttpContext.Request.Headers[TRACKING_ID_NAME]))
 			{
-				_trackingId = HttpContext.Request.Headers[_trackingIdName];
+				_trackingId = HttpContext.Request.Headers[TRACKING_ID_NAME];
 
 				_calculation = String.Join('+', request.Addends.ToArray());
 
 				var result = request.Calculate();
-				_logger.LogInfo($"The result of {_calculation} is {result}.");
+				_logger.Info("The result of {0} is {1}.", _calculation, result);
 
 				// save to journal
-				Journal.AddRecord(_trackingId, _operation, _calculation + "=" + result);
+				Journal.AddRecord(_trackingId, ADD, _calculation + " = " + result);
 				// Return result to client
 				return AdditionResponse.FromAddition(result);
 			}
 			else
 			{
-				var errorKey = "addends";
 				var errorMessage = "Missing tracking id or invalid input parameters. Make sure you entered at least two numbers.";
-				return BadRequest(ThrowBadRequest400(errorKey, errorMessage));
+				return BadRequest(ThrowBadRequest400(ADD, errorMessage));
 			}
 
 		}
 		// ipaddress/Calculator/sub
-		[HttpPost("sub")]
+		[HttpPost(SUB)]
 		public ActionResult<SubtractionResponse> Subtract(SubtractionRequest request)
 		{
-			_operation = "sub";
-			_logger.LogInfo($"Recieved request for operation: {_operation}.");
+			_logger.Info("Recieved request for operation: {0}.", SUB);
 
 			// Check if the request is null or empty and returns a BadRequest 400 response
-			if (request == null || request.IsEmpty())
+			if (string.IsNullOrWhiteSpace(request?.Minuend.ToString()) || string.IsNullOrEmpty(request?.Subtrahend.ToString()))
 			{
-				var errorKey = "subtraction";
-				return BadRequest(ThrowBadRequest400(errorKey));
+				return BadRequest(ThrowBadRequest400(SUB));
 			}
 
-			if (request.IsValid() & !string.IsNullOrEmpty(HttpContext.Request.Headers[_trackingIdName]))
+			if (request.IsValid() & !string.IsNullOrEmpty(HttpContext.Request.Headers[TRACKING_ID_NAME]))
 			{
-				_trackingId = HttpContext.Request.Headers[_trackingIdName];
+				_trackingId = HttpContext.Request.Headers[TRACKING_ID_NAME];
 
 				_calculation = request.Minuend + "-" + request.Subtrahend;
 
 				var result = request.Calculate();
-				_logger.LogInfo($"The result of {_calculation} is {result}.");
+				_logger.Info("The result of {0} is {1}.", _calculation, result);
 
 				// save to journal
-				Journal.AddRecord(_trackingId, _operation, _calculation + "=" + result);
+				Journal.AddRecord(_trackingId, SUB, _calculation + " = " + result);
 				// Return result to client
 				return SubtractionResponse.FromSubtraction(result);
 			}
 			else
 			{
-				var errorKey = "subtraction";
 				var errorMessage = "Missing tracking id or invalid input parameters. Make sure you entered only numbers and not other characters.";
-				return BadRequest(ThrowBadRequest400(errorKey, errorMessage));
+				return BadRequest(ThrowBadRequest400(SUB, errorMessage));
 			}
 		}
 		// ipaddress/Calculator/mult
-		[HttpPost("mult")]
+		[HttpPost(MULT)]
 		public ActionResult<MultiplicationResponse> Multiply(MultiplicationRequest request)
 		{
-			_operation = "mult";
-			_logger.LogInfo($"Recieved request for operation: {_operation}.");
+			_logger.Info("Recieved request for operation: {0}.", MULT);
 
 			// Check if the request is null or empty and returns a BadRequest 400 response
-			if (request == null || request.IsEmpty())
+			if (string.IsNullOrWhiteSpace(request?.Factors.ToString()))
 			{
-				var errorKey = "multiplication";
-				return BadRequest(ThrowBadRequest400(errorKey));
+				return BadRequest(ThrowBadRequest400(MULT));
 			}
 
-			if (request.IsValid() & !string.IsNullOrEmpty(HttpContext.Request.Headers[_trackingIdName]))
+			if (request.IsValid() & !string.IsNullOrEmpty(HttpContext.Request.Headers[TRACKING_ID_NAME]))
 			{
-				_trackingId = HttpContext.Request.Headers[_trackingIdName];
+				_trackingId = HttpContext.Request.Headers[TRACKING_ID_NAME];
 
 				_calculation = String.Join('*', request.Factors.ToArray());
 
 				var result = request.Calculate();
-				_logger.LogInfo($"The result of {_calculation} is {result}.");
+				_logger.Info("The result of {0} is {1}.", _calculation, result);
 
 				// Save to journal
-				Journal.AddRecord(_trackingId, _operation, _calculation + "=" + result);
+				Journal.AddRecord(_trackingId, MULT, _calculation + " = " + result);
 				// Return result to client
 				return MultiplicationResponse.FromMultiplication(result);
 			}
 			else
 			{
-				var errorKey = "multiplication";
 				var errorMessage = "Missing tracking id or invalid input parameters. Make sure you entered at least two numbers.";
-				return BadRequest(ThrowBadRequest400(errorKey, errorMessage));
+				return BadRequest(ThrowBadRequest400(MULT, errorMessage));
 			}
 		}
 		// ipaddress/Calculator/div
-		[HttpPost("div")]
+		[HttpPost(DIV)]
 		public ActionResult<DivisionResponse> Division(DivisionRequest request)
 		{
-			_operation = "div";
-			_logger.LogInfo($"Recieved request for operation: {_operation}.");
+			_logger.Info("Recieved request for operation: {0}.", DIV);
 
 			// Check if the request is null or empty and returns a BadRequest 400 response
-			if (request == null || request.IsEmpty())
+			if (string.IsNullOrWhiteSpace(request?.Dividend.ToString()) || string.IsNullOrWhiteSpace(request?.Dividend.ToString()))
 			{
-				var errorKey = "division";
-				return BadRequest(ThrowBadRequest400(errorKey));
+				return BadRequest(ThrowBadRequest400(DIV));
 			}
 
-			if (request.IsValid() & !string.IsNullOrEmpty(HttpContext.Request.Headers[_trackingIdName]))
+			if (request.IsValid() & !string.IsNullOrEmpty(HttpContext.Request.Headers[TRACKING_ID_NAME]))
 			{
-				_trackingId = HttpContext.Request.Headers[_trackingIdName];
+				_trackingId = HttpContext.Request.Headers[TRACKING_ID_NAME];
 
 				_calculation = request.Dividend + "/" + request.Divisor;
 
 				var result = request.Calculate();
-				_logger.LogInfo($"The result of {_calculation} is {result}.");
+				_logger.Info("The result of {0} is {1}.", _calculation, result);
 
 				// Save to journal
-				Journal.AddRecord(_trackingId, _operation, _calculation + "=" + " { Quotient:" + result.ToArray()[0] + ", Remainder: " + result.ToArray()[1] + " }");
+				Journal.AddRecord(_trackingId, DIV, _calculation + " = " + " { Quotient:" + result.ToArray()[0] + ", Remainder: " + result.ToArray()[1] + " }");
 				// Return result to client
 				return DivisionResponse.FromDivision(result.First(), result.Last());
 			}
 			else
 			{
-				var errorKey = "division";
 				var errorMessage = "Missing tracking id or invalid input parameters. Make sure you entered integers and you didn't enter a zero as the divisor!.";
-				return BadRequest(ThrowBadRequest400(errorKey, errorMessage));
+				return BadRequest(ThrowBadRequest400(DIV, errorMessage));
 			}
 		}
 		// ipaddress/Calculator/sqrt
-		[HttpPost("sqrt")]
+		[HttpPost(SQRT)]
 		public ActionResult<SquareRootResponse> SquareRoot(SquareRootRequest request)
 		{
-			_operation = "sqrt";
-			_logger.LogInfo($"Recieved request for operation: {_operation}.");
+			_logger.Info("Recieved request for operation: {0}.", SQRT);
 
 			// Check if the request is null or empty and returns an BadRequest 400 response
-			if (request == null || request.IsEmpty())
+			if (string.IsNullOrWhiteSpace(request?.Number.ToString()))
 			{
-				var errorKey = "squareRoot";
-				return BadRequest(ThrowBadRequest400(errorKey));
+				return BadRequest(ThrowBadRequest400(SQRT));
 			}
 
-			if (request.IsValid() & !string.IsNullOrEmpty(HttpContext.Request.Headers[_trackingIdName]))
+			if (request.IsValid() & !string.IsNullOrEmpty(HttpContext.Request.Headers[TRACKING_ID_NAME]))
 			{
-				_trackingId = HttpContext.Request.Headers[_trackingIdName];
+				_trackingId = HttpContext.Request.Headers[TRACKING_ID_NAME];
 
 				_calculation = "√" + request.Number;
 
 				var result = request.Calculate();
-				_logger.LogInfo($"The result of {_calculation} is {result}.");
+				_logger.Info("The result of {0} is {1}.", _calculation, result);
 
 				// Save to journal
-				Journal.AddRecord(_trackingId, _operation, _calculation + "=" + result);
+				Journal.AddRecord(_trackingId, SQRT, _calculation + " = " + result);
 				// Return result to client
 				return SquareRootResponse.FromSquareRoot(result);
 			}
 			else
 			{
-				var errorKey = "squareRoot";
 				var errorMessage = "Missing tracking id or invalid input parameters. Make sure you entered only numbers and not other characters.";
-				return BadRequest(ThrowBadRequest400(errorKey, errorMessage));
+				return BadRequest(ThrowBadRequest400(SQRT, errorMessage));
 			}
 		}
 		// ipaddress/Calculator/journal/query
-		[HttpPost("journal/query")]
+		[HttpPost(JOURNAL_QUERY)]
 		public ActionResult<JournalResponse> JournalQuery(JournalRequest request)
 		{
-			_logger.LogInfo($"Recieved request for operation: Journal.");
+			_logger.Info("Recieved request for operation: {0}.", JOURNAL_QUERY);
 
 			// Check if the request is null or empty and returns an InternalServerError 500 response
-			if (request == null || request.IsEmpty())
+			if (string.IsNullOrWhiteSpace(request?.Id))
 			{
-				var errorKey = "journal";
-				return BadRequest(ThrowBadRequest400(errorKey));
+				return BadRequest(ThrowBadRequest400(JOURNAL_QUERY));
 			}
 
 			if (request.HasTrackingId())
 			{
-				var records = Journal.GetRecordsForTrackingId(request.Id);
-				if (records.ToArray()[0].GetType() == typeof(string[]))
+				var records = Journal.TryGetRecordsForTrackingId(request.Id);
+				if (records != null)
 				{
 					return JournalResponse.FromJournal(records);
 				}
 			}
 
 			return new ObjectResult(new JournalResponse { Operations = new List<JournalOperation>(), Message = "The journal is currently empty." });
-		}
-		public static CalculatorBadRequest ThrowBadRequest400(string errorKey, string errorMessage = "The request that was sent is not valid, is null or it's empty.")
-		{
-			_logger.LogError($"ERROR 400: BadRequest. {errorMessage}");
-
-			var modelState = new ModelStateDictionary();
-			modelState.AddModelError(errorKey, errorMessage);
-			return new CalculatorBadRequest(modelState);
 		}
 	}
 }

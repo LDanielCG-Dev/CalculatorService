@@ -15,7 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CalculatorService.Models\CalculatorService.Models.csproj" />
-    <ProjectReference Include="..\LoggerService\LoggerService.csproj" />
+    <ProjectReference Include="..\CalculatorService.Utils\CalculatorService.Utils.csproj" />
   </ItemGroup>
 
 </Project>

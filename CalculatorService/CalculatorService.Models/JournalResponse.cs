@@ -1,18 +1,18 @@
-﻿using LoggerService;
-using System.Collections.Concurrent;
+﻿using System.Collections.Concurrent;
+using NLog;
 
 namespace CalculatorService.Models
 {
 	public class JournalResponse
 	{
-		private static readonly ILoggerManager _logger = new LoggerManager();
+		private static ILogger _logger = LogManager.GetCurrentClassLogger();
 		public List<JournalOperation> Operations { get; set; } = new List<JournalOperation>();
 		public string? Message { get; set; }
 
 		public static JournalResponse FromJournal(ConcurrentBag<string[]> records)
 		{
 			var response = new JournalResponse();
-			_logger.LogInfo("Adding records to journal...");
+			_logger.Info("Adding records to journal...");
 			foreach (var record in records)
 			{
 				response.Operations.Add(new JournalOperation
@@ -22,7 +22,7 @@ namespace CalculatorService.Models
 					Date = record[2]
 				});
 			}
-			_logger.LogInfo("Sending response back.");
+			_logger.Info("Sending response back.");
 			return response;
 		}
 	}

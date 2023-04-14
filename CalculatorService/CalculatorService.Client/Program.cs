@@ -1,237 +1,16 @@
 ﻿using RestSharp;
 using CalculatorService.Models;
-using System.Globalization;
-using LoggerService;
+using CalculatorService.Utils;
+using NLog;
 
 namespace CalculatorService.Client
 {
 	public class Program
 	{
-		private static readonly ILoggerManager _logger = new LoggerManager();
-		private static RestResponse<TResponse> SendRequestGetResponse<TRequest, TResponse>(RestClient client, string endPoint, Method method, params (string propertyName, object propertyValue)[] propertyValues) where TRequest : new() where TResponse : class, new()
-		{
-			var requestBody = BuildRequest<TRequest>(propertyValues);
-			var response = SendData<TResponse>(client, endPoint, method, requestBody);
-			return response;
-		}
-		private static T BuildRequest<T>(params (string propertyName, object propertyValue)[] propertyValues) where T : new()
-		{
-			_logger.LogInfo("Building request...");
-			var instance = new T();
-			foreach (var (propertyName, propertyValue) in propertyValues)
-			{
-				var property = typeof(T).GetProperty(propertyName);
-				if (property != null)
-				{
-					property.SetValue(instance, propertyValue);
-				}
-			}
-			_logger.LogInfo("Request built.");
-			return instance;
-		}
-		private static RestResponse<T>? SendData<T>(RestClient client, string endpoint, Method method, object requestBody) where T : class, new()
-		{
-			_logger.LogInfo("Setting request headers...");
-			var request = new RestRequest(endpoint, method);
-			request.AddHeader("Accept", "application/json");
-			request.AddHeader("Content-Type", "application/json");
-			request.AddHeader("X-Evi-Tracking-Id", _trackingId);
-			_logger.LogInfo("Setting request body...");
-			request.AddJsonBody(requestBody);
-
-			_logger.LogInfo("Sending data to server...");
-			var response = client.Execute<T>(request);
-			if (response.StatusCode == System.Net.HttpStatusCode.OK)
-			{
-				_logger.LogInfo("Data recieved from server. Returning response.");
-				return response;
-			}
-			else
-			{
-				_logger.LogError($"An error has occured: {response.ErrorMessage}.");
-				Console.WriteLine($"Error: {response.ErrorMessage}");
-				return null;
-			}
-		}
-		private static int GetUserInputInt(bool divisor = false)
-		{
-			_logger.LogInfo("User inputting data...");
-
-			int inputNum;
-			while (true)
-			{
-				Console.Write("> ");
-				var input = Console.ReadLine();
-
-				if (IntIsValid(input))
-				{
-					if (divisor && input.Equals("0"))
-					{
-						_logger.LogError("The inputted divisor was zero.");
-						Console.WriteLine("You can't divide by zero!");
-						Console.WriteLine("Please enter a valid number:");
-					}
-					else
-					{
-						inputNum = int.Parse(input);
-						break;
-					}
-				}
-			}
-			_logger.LogInfo("Returning validated data...");
-			return inputNum;
-		}
-		private static IList<double> GetUserInputList()
-		{
-			_logger.LogInfo("User inputting data...");
-
-			List<double> inputNum;
-			while (true)
-			{
-				Console.Write("> ");
-				var input = Console.ReadLine().Split(',');
-
-				if (AddMultIsValid(input))
-				{
-					inputNum = Array.ConvertAll(input, s => Double.Parse(s, CultureInfo.GetCultureInfo("en-US"))).ToList();
-					break;
-				}
-			}
-			_logger.LogInfo("Returning validated data...");
-			return inputNum;
-		}
-		private static double GetUserInputDouble()
-		{
-			_logger.LogInfo("User inputting data...");
-
-			double inputNum = 0.0;
-			string input = "";
-			while (true)
-			{
-				Console.Write("> ");
-				input = Console.ReadLine();
-
-				if (DoubleIsValid(input))
-				{
-					if (input.Contains(','))
-					{
-						inputNum = double.Parse(input.Replace(',', '.'), CultureInfo.GetCultureInfo("en-US"));
-					}
-					inputNum = double.Parse(input);
-					break;
-				}
-			}
-			_logger.LogInfo("Returning validated data...");
-			return inputNum;
-		}
-		private static bool AddMultIsValid(string[] input)
-		{
-			_logger.LogInfo("Validating input...");
-			const int MAX_DIGITS = 9;
-			var operands = input.ToArray();
-
-			if (operands.Length >= 2)
-			{
-				foreach (var num in operands)
-				{
-					if (!double.TryParse(num, out var addParsed) || num.ToString().Length > MAX_DIGITS)
-					{
-						_logger.LogError($"Validation failed. Invalid number {num}.");
-						Console.WriteLine($"Invalid number: {num}");
-						return false;
-					}
-				}
-			}
-			else
-			{
-				_logger.LogError("Validation failed. Not enough input numbers.");
-				Console.WriteLine("Please enter at least 2 valid numbers separated by commas:");
-				return false;
-			}
-			_logger.LogInfo("Validation successful. The input is valid.");
-			return true;
-		}
-		private static bool DoubleIsValid(string number)
-		{
-			_logger.LogInfo("Validating input...");
-			if (!string.IsNullOrEmpty(number))
-			{
-				const int MAX_DIGITS = 9;
-				if (!double.TryParse(number, out var parsed) || number.Length > MAX_DIGITS)
-				{
-					_logger.LogError($"Validation failed. Invalid number {number}.");
-					Console.WriteLine($"Invalid number: {number}");
-					Console.WriteLine("Please enter a valid number:");
-					return false;
-				}
-			}
-			else
-			{
-				_logger.LogError("User didn't input a number.");
-				Console.WriteLine("Please enter a number:");
-				return false;
-			}
-			_logger.LogInfo("Validation successful. The input is valid.");
-			return true;
-		}
-		private static bool IntIsValid(string number)
-		{
-			_logger.LogInfo("Validating input...");
-			if (!string.IsNullOrEmpty(number))
-			{
-				const int MAX_DIGITS = 9;
-				if (!int.TryParse(number, out var parsed) || number.Length > MAX_DIGITS)
-				{
-					_logger.LogError($"Validation failed. Invalid number {number}.");
-					Console.WriteLine($"Invalid number: {number}");
-					Console.WriteLine("Please enter a valid number:");
-					return false;
-				}
-			}
-			else
-			{
-				_logger.LogError("User didn't input a number.");
-				Console.WriteLine("Please enter a number:");
-				return false;
-			}
-			_logger.LogInfo("Validation successful. The input is valid.");
-			return true;
-		}
-		private static void PrintResult<T>(RestResponse<T> response) where T : class, new()
-		{
-			if (response != null)
-			{
-				// Print headers
-				_logger.LogInfo("Printing headers...");
-				Console.WriteLine($"HTTP/1.1 200 {response.StatusCode}");
-				foreach (var header in response.ContentHeaders)
-				{
-					Console.WriteLine($"{header.Name}: {header.Value}");
-				}
-
-				// Print data
-				_logger.LogInfo("Printing data...");
-				var data = response.Data;
-				var type = data.GetType();
-				var properties = type.GetProperties();
-
-				Console.WriteLine("{");
-				foreach (var property in properties)
-				{
-					var value = property.GetValue(data);
-					Console.WriteLine($"  {property.Name}: {value}");
-				}
-				Console.WriteLine("}");
-			}
-			else
-			{
-				_logger.LogError("ERROR: the response returned null.");
-				Console.WriteLine("ERROR: the response returned null!");
-			}
-		}
+		private static readonly ILogger _logger = LogManager.GetCurrentClassLogger();
 		private static void PrintJournalResponse(RestResponse<JournalResponse> response)
 		{
-			_logger.LogInfo("Printing data...");
+			_logger.Info("Printing data...");
 			Console.WriteLine("{");
 
 			if(response != null)
@@ -261,7 +40,7 @@ namespace CalculatorService.Client
 				}
 				else if (journalResponse.Message != null)
 				{
-					_logger.LogInfo(journalResponse.Message);
+					_logger.Info(journalResponse.Message);
 					Console.WriteLine($"  Message: {journalResponse.Message}");
 				}
 			}
@@ -269,16 +48,15 @@ namespace CalculatorService.Client
 			Console.WriteLine("}");
 		}
 
-		private static string _trackingId = new Random().Next(1000, 10000).ToString();
+		private static readonly string _trackingId = new Random().Next(1000, 10000).ToString();
 		public static void Main(string[] args)
 		{
-			_logger.LogInfo("Client started.");
+			_logger.Info("Client started.");
 			var ip = "http://localhost:5199";
-			_logger.LogInfo($"Connecting to server with IP: {ip}");
+			_logger.Info("Connecting to server with IP: {0}", ip);
 			var client = new RestClient(ip);
-			var endPoint = "";
 			var method = Method.Post;
-			_logger.LogInfo($"Selected method: {method}.");
+			_logger.Info("Selected method: {0}.", method);
 
 			while (true)
 			{
@@ -288,100 +66,115 @@ namespace CalculatorService.Client
 				Console.Write("> ");
 				var operation = Console.ReadLine();
 				Console.WriteLine("-----------------------------------------------------------------------------------------------------------");
-				_logger.LogInfo("Calculator menu displayed.");
+				_logger.Info("Calculator menu displayed.");
 
-				switch (operation.ToLower())
+				string? endPoint;
+				switch (operation?.ToLower())
 				{
 					case "add":
-						_logger.LogInfo("Operation selected: add");
+						_logger.Info("Operation selected: add");
 						// Input addends
 						Console.WriteLine("Enter numbers to add (separated by commas):");
-						var addends = GetUserInputList();
+						var addends = UserInput.GetUserInputList();
 
 						// Data is sent and recieved
 						endPoint = "Calculator/add";
-						var additionResponse = SendRequestGetResponse<AdditionRequest, AdditionResponse>(client, endPoint, method, ("Addends", addends));
+						var additionResponse = HTTPConnection.SendRequestGetResponse<AdditionRequest, AdditionResponse>(client, endPoint, method, _trackingId, ("Addends", addends));
 
 						// Print result
-						PrintResult(additionResponse);
+						Console.WriteLine(additionResponse.Data);
 						break;
 
 					case "subtract":
-						_logger.LogInfo("Operation selected: sub");
+						_logger.Info("Operation selected: sub");
 						// Input minuend
 						Console.WriteLine("Enter minuend:");
-						var minuend = GetUserInputDouble();
+						var minuend = UserInput.GetUserInputDouble();
 
 						// Input subtrahend
 						Console.WriteLine("Enter subtrahend:");
-						var subtrahend = GetUserInputDouble();
+						var subtrahend = UserInput.GetUserInputDouble();
 
 						// Data is sent and recieved
 						endPoint = "Calculator/sub";
-						var subtractionResponse = SendRequestGetResponse<SubtractionRequest, SubtractionResponse>(client, endPoint, method, ("Minuend", minuend), ("Subtrahend", subtrahend));
+						var subtractionResponse = HTTPConnection.SendRequestGetResponse<SubtractionRequest, SubtractionResponse>(client, endPoint, method, _trackingId, ("Minuend", minuend), ("Subtrahend", subtrahend));
 
 						// Print result
-						PrintResult(subtractionResponse);
+						Console.WriteLine(subtractionResponse.Data);
 						break;
 
 					case "multiply":
-						_logger.LogInfo("Operation selected: mult");
+						_logger.Info("Operation selected: mult");
 						// Input factors
 						Console.WriteLine("Enter numbers to multiply (separated by commas):");
-						var factors = GetUserInputList();
+						var factors = UserInput.GetUserInputList();
 
 						// Data is sent and recieved
 						endPoint = "Calculator/mult";
-						var multiplicationResponse = SendRequestGetResponse<MultiplicationRequest, MultiplicationResponse>(client, endPoint, method, ("Factors", factors));
+						var multiplicationResponse = HTTPConnection.SendRequestGetResponse<MultiplicationRequest, MultiplicationResponse>(client, endPoint, method, _trackingId, ("Factors", factors));
 
 						// Print result
-						PrintResult(multiplicationResponse);
+						Console.WriteLine(multiplicationResponse.Data);
 						break;
 
 					case "divide":
-						_logger.LogInfo("Operation selected: sub");
+						_logger.Info("Operation selected: sub");
 						// Input dividend
 						Console.WriteLine("Enter dividend:");
-						int dividend = GetUserInputInt();
-
+						int dividend = UserInput.GetUserInputInt();
+						int divisor;
 						// Input divisor
-						Console.WriteLine("Enter divisor:");
-						int divisor = GetUserInputInt(divisor: true);
+						while (true)
+						{
+							Console.WriteLine("Enter divisor:");
+							divisor = UserInput.GetUserInputInt();
+
+							if (divisor == 0)
+							{
+								_logger.Error("The inputted divisor was zero.");
+								Console.WriteLine("You can't divide by zero!");
+								Console.WriteLine("Please enter a valid number:");
+							}
+							else
+							{
+								break;
+							}
+						}
 
 						// Data is sent and recieved
 						endPoint = "Calculator/div";
-						var divisionResponse = SendRequestGetResponse<DivisionRequest, DivisionResponse>(client, endPoint, method, ("Dividend", dividend), ("Divisor", divisor));
+						var divisionResponse = HTTPConnection.SendRequestGetResponse<DivisionRequest, DivisionResponse>(client, endPoint, method, _trackingId, ("Dividend", dividend), ("Divisor", divisor));
 
 						// Print result
-						PrintResult(divisionResponse);
+						Console.WriteLine(divisionResponse.Data);
 						break;
 
 					case "sqroot":
-						_logger.LogInfo("Operation selected: sqrt");
+						_logger.Info("Operation selected: sqrt");
 						// Input number
 						Console.WriteLine("Enter number: ");
-						var numberSqrt = GetUserInputDouble();
+						var numberSqrt = UserInput.GetUserInputDouble();
 
 						// Data is sent and recieved
 						endPoint = "Calculator/sqrt";
-						var squareRootResponse = SendRequestGetResponse<SquareRootRequest, SquareRootResponse>(client, endPoint, method, ("Number", numberSqrt));
+						var squareRootResponse = HTTPConnection.SendRequestGetResponse<SquareRootRequest, SquareRootResponse>(client, endPoint, method, _trackingId, ("Number", numberSqrt));
 
 						// Print result
-						PrintResult(squareRootResponse);
+						Console.WriteLine(squareRootResponse.Data);
 						break;
 
 					case "journal":
-						_logger.LogInfo("Operation selected: journal");
+						_logger.Info("Operation selected: journal");
 						// Data is sent and recieved
 						endPoint = "Calculator/journal/query";
-						var journalResponse = SendRequestGetResponse<JournalRequest, JournalResponse>(client, endPoint, method, ("Id", _trackingId));
+						var journalResponse = HTTPConnection.SendRequestGetResponse<JournalRequest, JournalResponse>(client, endPoint, method, _trackingId, ("Id", _trackingId));
 
 						// Print result
 						PrintJournalResponse(journalResponse);
 						break;
 
 					default:
-						_logger.LogError("User didn't select one of the operations.");
+						_logger.Error("User didn't select one of the operations.");
 						Console.WriteLine("Please select one of the operations!");
 						break;
 				}
