@@ -10,6 +10,7 @@
 /CalculatorService/CalculatorService.ServerAPI/bin
 /CalculatorService/CalculatorService.ServerAPI/obj
 /CalculatorService/CalculatorService.ServerAPI/Logs
+/CalculatorService/CalculatorService.ServerAPI/CalculatorService.ServerAPI.csproj.user
 /CalculatorService/CalculatorService.Models/bin
 /CalculatorService/CalculatorService.Models/obj
 /CalculatorService/CalculatorService.Utils/bin
