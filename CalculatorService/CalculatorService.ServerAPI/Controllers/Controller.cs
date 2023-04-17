@@ -147,7 +147,7 @@ namespace CalculatorService.ServerAPI.Controllers
 				_calculation = request.Dividend + "/" + request.Divisor;
 
 				var result = request.Calculate();
-				_logger.Info("The result of {0} is {1}.", _calculation, result);
+				_logger.Info("The result of {0} is {1}.", _calculation, "Quotient: " + result.ToArray()[0] + ", Remainder: " + result.ToArray()[1]);
 
 				// Save to journal
 				Journal.AddRecord(_trackingId, DIV, _calculation + " = " + " { Quotient:" + result.ToArray()[0] + ", Remainder: " + result.ToArray()[1] + " }");
